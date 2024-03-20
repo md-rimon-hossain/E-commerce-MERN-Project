@@ -1,0 +1,19 @@
+1.express
+2.nodemon
+3.morgan
+4.dotenv
+5.http-errors
+6.how secure API  -> xss-clean, express-rate-limit
+7.this packege help upload file ---> multer
+8.this packege input validation check --> express-validator 
+
+
+
+
+
+
+
+
+
+
+password ---> buuc coyv uhhh vjmk
