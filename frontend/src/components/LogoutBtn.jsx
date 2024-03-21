@@ -18,7 +18,7 @@ function LogoutBtn({ setUser }) {
   };
   return (
     <>
-      <button className="text-md text-[#ffffff]" onClick={handleLogout}>logout</button>
+      <button className="text-md text-[18px] py-2 text-[#ffffff]" onClick={handleLogout}>Logout</button>
     </>
   );
 }

@@ -24,12 +24,13 @@ const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
-  const authStatus = useSelector((state)=> state.auth.authStatus)
-  console.log(authStatus)
+  const { authStatus, loginUserData } = useSelector((state) => state.auth);
+  console.log(authStatus);
+  console.log(loginUserData);
 
   return (
-    <Container className={"bg-[#F85606]"}>
-      <header className="h-auto ">
+    <header className="h-[80px] flex items-center justify-center bg-[#464646] ">
+      <Container>
         <nav>
           {/* bottom navbar  */}
           <div className="bg-inherit ">
@@ -54,13 +55,13 @@ const Header = () => {
                     />
                   )}
                 </div>
-                
-                <ul className="md:flex justify-center text-center  items-center hidden">
-                <div>
-                  <Link to={"/"}>
-                    <h1>Rimon</h1>
-                  </Link>
-                </div>
+
+                <ul className="md:flex   justify-center text-center  items-center hidden">
+                  <div className="text-[#ffffff]">
+                    <Link to={"/"}>
+                      <h1>Rimon</h1>
+                    </Link>
+                  </div>
                   <NavLinks
                     showNavbar={showNavbar}
                     setShowNavbar={setShowNavbar}
@@ -111,22 +112,41 @@ const Header = () => {
                 <div className="md:flex justify-between items-center gap-2  sm:text-[13px] hidden lg:text-[17px]">
                   <Link to={"/login"}>
                     <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                      {
-                        authStatus ? <LogoutBtn/> : <button className="text-md text-[#ffffff]">Login</button> 
-                      }
+                      {authStatus ? (
+                        <LogoutBtn />
+                      ) : (
+                        
+                        <button className="text-md py-2 text-[18px] text-[#ffffff]">
+                          Login
+                        </button>
+                      )}
                     </div>
                   </Link>
-                  {
-                    !authStatus && <Link to={"/register"}>
-                    <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                      <button className="text-md text-[#ffffff]">Sign Up</button>
-                    </div>
-                  </Link>
-                  }
+
+                  {authStatus && loginUserData.isAdmin ? (
+                    <Link to={"/admin-dashboard"}>
+                      <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                        <button className="text-md py-2 text-[18px] text-[#ffffff]">
+                          Dashboard
+                        </button>
+                      </div>
+                    </Link>
+                  ) : null}
+                  {!authStatus && (
+                    <Link to={"/register"}>
+                      <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                        <button className="text-md py-2 text-[18px] text-[#ffffff]">
+                          SignUp
+                        </button>
+                      </div>
+                    </Link>
+                  )}
                   <Link to={"/cart"}>
                     <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
                       <BsCart className="lg:text-xl text-[17px] text-[#fff]" />
-                      <button className="text-md text-[#ffffff]">Cart</button>
+                      <button className="text-md py-2 text-[18px] text-[#ffffff]">
+                        Cart
+                      </button>
                     </div>
                   </Link>
                 </div>
@@ -195,8 +215,8 @@ const Header = () => {
             </div>
           </div>
         </nav>
-      </header>
-    </Container>
+      </Container>
+    </header>
   );
 };
 

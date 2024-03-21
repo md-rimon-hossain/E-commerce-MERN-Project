@@ -31,7 +31,7 @@ const AllGroupLinks = ({
                 <div key={index} className="group/subheading">
                   <div>
                     <h1
-                      className={`text-[18px] group-hover/subheading:text-cardHoverColor`}
+                      className={`text-[18px]`}
                     >
                       {subLinkElement.linkHeader}
                     </h1>

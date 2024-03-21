@@ -29,11 +29,12 @@ const handleLogin = async (req, res, next) => {
     }
 
     // create access token
-    const accessToken = createJSONWebToken({ user }, jwtAccessKey, "10m");
+    const accessToken = createJSONWebToken({ user }, jwtAccessKey, "30s");
 
     // create http cookie
     res.cookie("accessToken", accessToken, {
-      maxAge: 10 * 60 * 1000, // 15 minutes
+      // maxAge: 10 * 60 * 1000, // 10 minutes
+      maxAge: 30 * 1000,
       httpOnly: true,
       // secure: true,
       someSite: "none",
@@ -86,8 +87,11 @@ const handleLogout = async (req, res, next) => {
 // use refresh token generate access token here 
 const handleRefreshToken = async (req, res, next) => {
   try {
-    
-    const OldRefreshToken = req.cookies.refreshToken
+      const OldRefreshToken = req.cookies.refreshToken
+
+      if(!OldRefreshToken){
+        throw createError(401, "Invalid refresh Token Please Login Again");
+      }
 
     // jwt verify old refresh token 
     const decodedToken = jwt.verify(OldRefreshToken, JwtRefreshKey)
@@ -102,17 +106,21 @@ const handleRefreshToken = async (req, res, next) => {
 
     // create http cookie
     res.cookie("accessToken", accessToken, {
-      maxAge: 10 * 60 * 1000, // 15 minutes
+      maxAge: 10 * 60 * 1000, // 10 minutes
+
       httpOnly: true,
       // secure: true,
       someSite: "none",
     });
 
+    const userWithoutPassword =  decodedToken.user
+    delete userWithoutPassword.password
+
     // Success response
     return successResponseHandler(res, {
       statusCode: 200,
       message: "New access token is generated.",
-      payload: {},
+      payload: userWithoutPassword,
     });
   } catch (error) {
    next(error)

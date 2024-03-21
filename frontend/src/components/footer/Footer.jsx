@@ -3,10 +3,12 @@ import { IoIosSend } from "react-icons/io";
 
 // import { appleStorePng, playStorePng, qrCodePng } from "../../index";
 import { Link } from "react-router-dom";
+import Container from "../Container";
 const Footer = () => {
   return (
     <>
-      <div className="h-auto bg-[#070F2B] w-full text-white">
+    <div className="h-auto bg-[#070F2B] w-full text-white">
+    <Container>
         <div className="px-6 py-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:grid-cols-4">
             <div>
@@ -103,7 +105,9 @@ const Footer = () => {
             </Link>
           </h1>
         </div>
+    </Container>
       </div>
+      
     </>
   );
 };
