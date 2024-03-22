@@ -13,6 +13,10 @@ function LogoutBtn({ setUser }) {
       await axios.post("/api/auth/logout");
       dispatch(logout());
     } catch (error) {
+      if (error.response.data.statusCode == 401) {
+        await axios.post("/api/auth/logout");
+        dispatch(logout());
+      }
       console.log(JSON.parse(error.request.response).message);
     }
   };

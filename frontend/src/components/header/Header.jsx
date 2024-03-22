@@ -29,7 +29,7 @@ const Header = () => {
   console.log(loginUserData);
 
   return (
-    <header className="h-[80px] flex items-center justify-center bg-[#464646] ">
+    <header className="h-[80px] flex items-center justify-center bg-[#2C1E1E] ">
       <Container>
         <nav>
           {/* bottom navbar  */}
@@ -115,7 +115,6 @@ const Header = () => {
                       {authStatus ? (
                         <LogoutBtn />
                       ) : (
-                        
                         <button className="text-md py-2 text-[18px] text-[#ffffff]">
                           Login
                         </button>

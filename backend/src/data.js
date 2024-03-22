@@ -2,7 +2,7 @@ const data = {
   users: [
     {
       name: "Rimon hossain",
-      email: "rimonhossen333@gmail.com",
+      email: "rimonhossain333@gmail.com",
       password: "Rimon1234$",
       phone: "01738743833",
       address: "boyragirchar, daulotpur, kushtia",

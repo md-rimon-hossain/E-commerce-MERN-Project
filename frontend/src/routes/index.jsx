@@ -5,6 +5,7 @@ import { Cart, Error, Home, Login, Product, Register } from "../pages/index.js";
 import IsAdmin from "../components/IsAdminLayout.jsx";
 import DashBoard from "../pages/DashBoard.jsx";
 import AuthLayout from "../components/AuthLayout.jsx";
+import UserActivate from "../pages/UserActivete.jsx";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <Error />,
+  },
+  {
+    path: "/users/activate/:token",
+    element: <UserActivate />,
   },
 ]);
 

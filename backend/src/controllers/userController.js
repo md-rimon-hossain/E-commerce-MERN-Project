@@ -45,7 +45,7 @@ const getAllUsers = async (req, res, next) => {
   }
 };
 
-// find single user by id
+// find single user by id admin
 const getUserById = async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -101,6 +101,7 @@ const processRegister = async (req, res, next) => {
     }
 
     const tokenPayloadData = { name, email, password, phone, address };
+
     if (image) {
       tokenPayloadData.image = image;
     }
@@ -114,7 +115,8 @@ const processRegister = async (req, res, next) => {
       subject: "Account Activation Email",
       html: `
         <h2>Hello ${name}</h2>
-        <p>Please click here to <a href="${clientURL}/api/users/activate/${token}"target="_blank"> activate Your Account</a></p>`,
+        <p>Please click here to <a href="${clientURL}/users/activate/${token}"target="_blank"> activate Your Account</a></p>
+        `,
     };
 
     // send email with node mailer
@@ -130,9 +132,9 @@ const processRegister = async (req, res, next) => {
       message: `please go to your ${email} for completing your registration process `,
       payload: {
         token,
-        tokenPayloadData,
       },
     });
+    
   } catch (error) {
     next(error);
   }
@@ -141,17 +143,19 @@ const processRegister = async (req, res, next) => {
 // activate User Account
 const activateUserAccount = async (req, res, next) => {
   try {
-    const token = req.body.token;
+    const token = req.body.token
     if (!token) {
       throw createError(404, "Token not Found");
     }
-
+    
+    
     try {
       const decoded = jwt.verify(token, jwtActivationKey);
+      console.log("|fjldsfjk");
       if (!decoded) {
         throw createError(401, "Unable to verify User");
       }
-
+      
       const existsUser = await User.exists({ email: decoded.email });
       if (existsUser) {
         throw createError(
@@ -180,6 +184,7 @@ const activateUserAccount = async (req, res, next) => {
           decoded,
         },
       });
+
     } catch (error) {
       if (error.name === "TokenExpiredError") {
         throw createError(401, "token has expired");

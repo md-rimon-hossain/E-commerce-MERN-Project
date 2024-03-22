@@ -12,6 +12,7 @@ const {
   forgetPassword,
   resetPassword,
 } = require("../controllers/userController");
+
 const {
   validateUserRegistration,
   validateUserUpdatePassword,
