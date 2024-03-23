@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "E-commerce Project",
-  "main": "server.js",
+  "main": "src/server.js",
   "engines": {
     "node": "18.x"
   },
