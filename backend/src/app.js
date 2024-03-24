@@ -34,7 +34,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://e-commerce-mern-project.vercel.app",
+      "https://e-commerce-mern-project-oxoa0hxh7.vercel.app",
     ],
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })

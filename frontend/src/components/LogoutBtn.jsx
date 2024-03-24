@@ -12,6 +12,7 @@ function LogoutBtn({ className = "" }) {
       await apiService.post("/api/auth/logout");
       dispatch(logout());
     } catch (error) {
+      
       if (error.response.status == 401) {
         const response = await apiService.post("/api/auth/logout");
         console.log(response.data);
