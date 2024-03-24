@@ -6,7 +6,7 @@ import { apiService } from "../api/apiService";
 
 function UserActivate() {
   const { token } = useParams();
-  const [errorMgs, setErrorMgs] = useState();
+  const [errorMgs, setErrorMgs] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function UserActivate() {
     })();
   }, []);
 
-  if (token.token) {
+  if (token) {
     return (
       <>
         <PageTitle title={"Register-activate"} />
