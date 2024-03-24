@@ -36,8 +36,8 @@ const handleLogin = async (req, res, next) => {
       // maxAge: 10 * 60 * 1000, // 10 minutes
       maxAge: 30 * 1000,
       httpOnly: true,
-      // secure: true,
-      // someSite: "none",
+      secure: true,
+      someSite: "none",
     });
 
     // create refresh token
@@ -47,7 +47,7 @@ const handleLogin = async (req, res, next) => {
     res.cookie("refreshToken", refreshToken, {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       httpOnly: true,
-      // secure: true,
+      secure: true,
       someSite: "none",
     });
     
@@ -109,8 +109,8 @@ const handleRefreshToken = async (req, res, next) => {
       maxAge: 10 * 60 * 1000, // 10 minutes
 
       httpOnly: true,
-      // secure: true,
-      // someSite: "none",
+      secure: true,
+      someSite: "none",
     });
 
     const userWithoutPassword =  decodedToken.user
