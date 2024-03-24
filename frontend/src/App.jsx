@@ -6,9 +6,9 @@ import "./App.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Container from "./components/Container";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./store/authSlice";
+import { apiService } from "./api/apiService";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -16,10 +16,10 @@ function App() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get("/api/auth/refresh-token");
+        const response = await apiService.get("/api/auth/refresh-token");
         const userData = response.data.payload
         if (response.data.success) {
-          const response = await axios.get("/api/auth/protected")
+          const response = await apiService.get("/api/auth/protected");
           if(response.data.success){
             dispatch(login(userData));
           }

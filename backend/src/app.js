@@ -6,8 +6,9 @@ const morgan = require("morgan");
 const xssClean = require("xss-clean");
 const cookieParser = require("cookie-parser");
 const rateLimit = require("express-rate-limit");
-const cors = require("cors");
+
 const path = require('path');
+const cors = require("cors")
 
 const { errorResponseHandler } = require("./controllers/responseController");
 
@@ -29,7 +30,14 @@ app.use(xssClean());
 app.use(morgan("dev"));
 app.use(cookieParser());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  })
+);
+
+
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));

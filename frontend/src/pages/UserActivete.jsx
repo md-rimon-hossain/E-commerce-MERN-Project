@@ -2,46 +2,41 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
 import Error from "./Error";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { apiService } from "../api/apiService";
 
 function UserActivate() {
-  
+  const { token } = useParams();
+  const [errorMgs, setErrorMgs] = useState();
+  const navigate = useNavigate();
 
- const token = useParams();
- const [errorMgs, setErrorMgs] = useState()
- const navigate = useNavigate()
- 
- useEffect(() => {
+  useEffect(() => {
     (async () => {
-     try {
-       setErrorMgs("")
-        const response = await axios.post("/api/users/activate", {
-          token:token.token,
+      try {
+        setErrorMgs("");
+        const response = await apiService.post("/api/users/activate", {
+          token,
         });
-       
-       console.log(response);
-       setTimeout(() => {
-         navigate("/login");
-       }, 5000);
 
-      } catch (error) {
-       console.log(error.response.data);
-
-       if (error.response.data.statusCode === 401) {
-        setErrorMgs(error.response.data.message)
+        console.log(response);
         setTimeout(() => {
-         navigate("/register")
+          navigate("/login");
         }, 5000);
-       }
+      } catch (error) {
+        console.log(error.response.data);
 
-       if (error.response.data.statusCode === 409) {
-        setErrorMgs(error.response.data.message)
-       } 
+        if (error.response.data.statusCode === 401) {
+          setErrorMgs(error.response.data.message);
+          setTimeout(() => {
+            navigate("/register");
+          }, 5000);
+        }
+
+        if (error.response.data.statusCode === 409) {
+          setErrorMgs(error.response.data.message);
+        }
       }
-  })();
-  
+    })();
   }, []);
-
 
   if (token.token) {
     return (
@@ -52,6 +47,7 @@ function UserActivate() {
             <h1 className="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">
               {errorMgs == "" ? "Registration successful" : errorMgs}
             </h1>
+            
             {errorMgs == "" ? (
               <div className="mt-6 flex items-center space-x-3">
                 <Link to="/login">

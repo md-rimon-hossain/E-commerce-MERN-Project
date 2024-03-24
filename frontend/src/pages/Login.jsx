@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+
+import  { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import PageTitle from "../components/PageTitle";
-import axios from "axios";
 import { login } from "../store/authSlice";
+import { apiService } from "../api/apiService";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/auth/login", { email, password });
+      const response = await apiService.post("/api/auth/login", { email, password });
       setEmail("");
       setSetPassword("");
 

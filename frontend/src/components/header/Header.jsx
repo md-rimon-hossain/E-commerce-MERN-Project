@@ -19,6 +19,7 @@ import Container from "../Container";
 import { useSelector } from 'react-redux';
 
 import LogoutBtn from "../LogoutBtn"
+import UserProfileBtn from "../UserProfileBtn";
 
 const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -26,7 +27,7 @@ const Header = () => {
 
   const { authStatus, loginUserData } = useSelector((state) => state.auth);
   console.log(authStatus);
-  console.log(loginUserData);
+
 
   return (
     <header className="h-[80px] flex items-center justify-center bg-[#2C1E1E] ">
@@ -35,7 +36,7 @@ const Header = () => {
           {/* bottom navbar  */}
           <div className="bg-inherit ">
             <div className="  flex items-center ">
-              <div className="">
+              <div className="flex-1">
                 <div className="md:hidden block cursor-pointer">
                   {showNavbar ? (
                     <FaXmark
@@ -68,6 +69,7 @@ const Header = () => {
                   />
                 </ul>
               </div>
+
               <div className=" w-full flex items-center justify-center">
                 <form className="flex justify-center items-center relative w-[90%] lg:w-[65%]">
                   <input
@@ -85,7 +87,8 @@ const Header = () => {
                   </button>
                 </form>
               </div>
-              <div className="w-[30%] px-3">
+
+              <div className=" px-3">
                 <div className="md:hidden block">
                   {showDetails ? (
                     <div className="p-[3px] border border-gray-500 rounded-md">
@@ -109,13 +112,14 @@ const Header = () => {
                     </div>
                   )}
                 </div>
+
                 <div className="md:flex justify-between items-center gap-2  sm:text-[13px] hidden lg:text-[17px]">
                   <Link to={"/login"}>
-                    <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                    <div className="flex justify-center font-semibold hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
                       {authStatus ? (
                         <LogoutBtn />
                       ) : (
-                        <button className="text-md py-2 text-[18px] text-[#ffffff]">
+                        <button className="text-md py-2 font-semibold text-[18px] text-[#ffffff]">
                           Login
                         </button>
                       )}
@@ -131,6 +135,7 @@ const Header = () => {
                       </div>
                     </Link>
                   ) : null}
+
                   {!authStatus && (
                     <Link to={"/register"}>
                       <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
@@ -143,11 +148,16 @@ const Header = () => {
                   <Link to={"/cart"}>
                     <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
                       <BsCart className="lg:text-xl text-[17px] text-[#fff]" />
-                      <button className="text-md py-2 text-[18px] text-[#ffffff]">
+                      <button className="text-md py-2 font-semibold text-[18px] text-[#ffffff]">
                         Cart
                       </button>
                     </div>
                   </Link>
+                  {authStatus && loginUserData ? (
+                    <Link to={"/user-profile"} className="w-[100px] font-bold">
+                      <UserProfileBtn className={"text-white"} />
+                    </Link>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -188,29 +198,62 @@ const Header = () => {
 
           {/*Profile details for mobile size*/}
           <div
-            className={`md:hidden absolute right-[45px]  rounded-md p-3 bg-gray-100 ${
+            className={`md:hidden absolute pb-2 right-[45px] w-[150px] rounded-md  bg-gray-100 ${
               showDetails ? "block" : "hidden"
             }`}
           >
-            <div className=" flex flex-col justify-start ">
-              <Link to={"/cart"} onClick={() => setShowDetails(!showDetails)}>
-                <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
-                  <BsCart className=" text-[14px] text-cardHoverColor" />
-                  <h3 className="text-md">Login</h3>
+            <div className=" flex  w-full flex-col justify-start items-center ">
+              <Link to={"/login"} onClick={() => setShowDetails(!showDetails)}>
+                <div className="flex  items-center gap-1  cursor-pointer mb-1 ">
+                  {authStatus ? (
+                    <LogoutBtn
+                      className={"text-black hover:text-orange-500 text-center"}
+                    />
+                  ) : (
+                    <span className="text-md">Login</span>
+                  )}
                 </div>
               </Link>
+              {authStatus && loginUserData.isAdmin ? (
+                <Link
+                  to={"/admin-dashboard"}
+                  onClick={() => setShowDetails(!showDetails)}
+                >
+                  <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
+                    <span className="text-md hover:text-orange-500">
+                      Dashboard
+                    </span>
+                  </div>
+                </Link>
+              ) : null}
+              {!authStatus && (
+                <Link
+                  to={"/register"}
+                  onClick={() => setShowDetails(!showDetails)}
+                >
+                  <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
+                    <span className="text-md hover:text-orange-500">
+                      SignUp
+                    </span>
+                  </div>
+                </Link>
+              )}
               <Link to={"/cart"} onClick={() => setShowDetails(!showDetails)}>
                 <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
-                  <BsCart className=" text-[14px] text-cardHoverColor" />
-                  <h3 className="text-md">Sign Up</h3>
+                  <span className="text-md hover:text-orange-500">Cart</span>
                 </div>
               </Link>
-              <Link to={"/cart"} onClick={() => setShowDetails(!showDetails)}>
-                <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
-                  <BsCart className=" text-[14px] text-cardHoverColor" />
-                  <h3 className="text-md">Cart</h3>
-                </div>
-              </Link>
+              {authStatus ? (
+                <Link
+                  to={"/user-profile"}
+                  onClick={() => setShowDetails(!showDetails)}
+                >
+                  <UserProfileBtn
+                    username={loginUserData.name}
+                    className={"hover:text-orange-500"}
+                  />
+                </Link>
+              ) : null}
             </div>
           </div>
         </nav>

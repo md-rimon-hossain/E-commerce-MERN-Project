@@ -1,9 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
 import PageTitle from "../components/PageTitle";
-import LogoutBtn from "../components/LogoutBtn";
 import Card from "../components/Card";
-
+import  "./Home.css";
 
 
 function Home() {
@@ -12,7 +9,7 @@ function Home() {
       <PageTitle title={"Home"} />
       <div className="py-5">
         <h2 className="text-2xl text-[#595B59]">Categories</h2>
-        <div className="grid grid-cols-4 py-2">
+        <div className="grid gap-5  xm-grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-2">
           <Card/>
           <Card/>
           <Card/>

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
 import PageTitle from "../components/PageTitle";
 import { Link } from "react-router-dom";
+import { apiService } from "../api/apiService";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -16,7 +16,7 @@ function Register() {
       setEmail("");
       setSetPassword("");
 
-      const response = await axios.post("/api/users/process-register", {
+      const response = await apiService.post("/api/users/process-register", {
         name: username,
         email,
         password,

@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import axios from "axios";
-import React from "react";
+
 import { logout } from "../store/authSlice";
 import { useDispatch } from "react-redux";
+import { apiService } from "../api/apiService";
 
-function LogoutBtn({ setUser }) {
+function LogoutBtn({ className = "" }) {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
     try {
-      await axios.post("/api/auth/logout");
+      await apiService.post("/api/auth/logout");
       dispatch(logout());
     } catch (error) {
-      if (error.response.data.statusCode == 401) {
-        await axios.post("/api/auth/logout");
+      if (error.response.status == 401) {
+        const response = await apiService.post("/api/auth/logout");
+        console.log(response.data);
         dispatch(logout());
       }
       console.log(JSON.parse(error.request.response).message);
@@ -22,7 +22,12 @@ function LogoutBtn({ setUser }) {
   };
   return (
     <>
-      <button className="text-md text-[18px] py-2 text-[#ffffff]" onClick={handleLogout}>Logout</button>
+      <button
+        className={`text-md text-[18px] py-2 text-[#ffffff] ${className}`}
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
     </>
   );
 }

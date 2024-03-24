@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import App from "../App.jsx";
-import { Cart, Error, Home, Login, Product, Register } from "../pages/index.js";
+import { Cart, Error, Home, Login, Product, Register, UserProfile } from "../pages/index.js";
 import IsAdmin from "../components/IsAdminLayout.jsx";
 import DashBoard from "../pages/DashBoard.jsx";
 import AuthLayout from "../components/AuthLayout.jsx";
@@ -37,6 +37,14 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication>
             <Cart />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/user-profile",
+        element: (
+          <AuthLayout authentication>
+            <UserProfile />
           </AuthLayout>
         ),
       },
