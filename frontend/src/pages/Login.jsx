@@ -15,18 +15,21 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+
       const response = await apiService.post("/api/auth/login", { email, password });
       setEmail("");
       setSetPassword("");
 
       console.log(response.data.payload);
-      if (!response.statusText) {
+      console.log(response)
+      if (!response.status == 200) {
         throw new Error("Login failed");
       }
       dispatch(login(response.data.payload))
       navigate("/")
     } catch (error) {
-      console.error("Login error:", JSON.parse(error.request?.response));
+      console.log(error)
+      console.error("Login error:", error.request?.response);
     }
   };
 

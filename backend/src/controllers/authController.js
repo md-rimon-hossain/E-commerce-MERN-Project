@@ -37,7 +37,7 @@ const handleLogin = async (req, res, next) => {
       maxAge: 30 * 1000,
       httpOnly: true,
       // secure: true,
-      someSite: "none",
+      // someSite: "none",
     });
 
     // create refresh token
@@ -110,7 +110,7 @@ const handleRefreshToken = async (req, res, next) => {
 
       httpOnly: true,
       // secure: true,
-      someSite: "none",
+      // someSite: "none",
     });
 
     const userWithoutPassword =  decodedToken.user
