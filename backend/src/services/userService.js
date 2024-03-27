@@ -272,6 +272,13 @@ const handleResetPasswordByToken = async (token, password) => {
       throw createError(400, "Password reset failed");
     }
   } catch (error) {
+    console.log(error.message)
+    if (error.message == "jwt malformed") {
+    throw createError(
+      400,
+      "Your action is wrong. Please take the correct procedure"
+    );
+    }
     throw error;
   }
 };

@@ -28,7 +28,7 @@ function LogoutBtn({ className = "" }) {
   return (
     <>
       <button
-        className={`text-md text-[18px] py-2 text-[#ffffff] ${className}`}
+        className={`text-md text-[18px] py-2 text-[#000] hover:text-[#fff] ${className}`}
         onClick={handleLogout}
       >
         Logout

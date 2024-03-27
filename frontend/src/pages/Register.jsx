@@ -15,7 +15,7 @@ function Register() {
   // user information
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setSetPassword] = useState("");
+  const [password, setPassword] = useState("");
 
   const [allErrAndSuccessMsg, setAllErrAndSuccessMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -62,7 +62,9 @@ function Register() {
     const validUserEmail = EMAIL_REGEX.test(email);
 
     if (!validUserName || !validUserPassword || !validUserEmail) {
-      setAllErrAndSuccessMsg("Invalid Entry");
+      setAllErrAndSuccessMsg(
+        "Invalid Entry Please provide correct information"
+      );
       return;
     }
 
@@ -76,7 +78,7 @@ function Register() {
       
       setUsername("");
       setEmail("");
-      setSetPassword("");
+      setPassword("");
       setIsLoading(false);
       setAllErrAndSuccessMsg(response.data.message);
 
@@ -120,13 +122,14 @@ function Register() {
         {allErrAndSuccessMsg && (
           <div className="bg-[#DBEAFE] flex justify-center items-center duration-500 xsm-full sm:w-[35%] absolute shadow top-[25%] translate-x-[-50%] translate-y-[-50%] left-[50%] w-[30%] rounded-[20px]  mb-5 border  py-4 lg:px-4">
             <div
-              className=" bg-white items-center p-3 text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
+              className=" bg-white rounded-full items-center p-3 text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
               role="alert"
             >
               <span
                 className={`font-semibold leading-6
                  ${
-                   allErrAndSuccessMsg == "Invalid Entry"
+                   allErrAndSuccessMsg ==
+                   "Invalid Entry Please provide correct information"
                      ? "text-[#FF1515]"
                      : "text-green-500"
                  }
@@ -268,7 +271,7 @@ function Register() {
                 <input
                   value={password}
                   onChange={(e) => {
-                    setSetPassword(e.target.value);
+                    setPassword(e.target.value);
                     setAllErrAndSuccessMsg("");
                   }}
                   aria-invalid={validPassword ? "false" : "true"}

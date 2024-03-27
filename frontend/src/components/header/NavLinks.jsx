@@ -25,7 +25,7 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
         AllLinksData.map((link) => (
           <div key={link.id}>
             <div
-              className="md:flex  justify-center items-center mx-3 px-2 cursor-pointer font-semibold my-2 hidden"
+              className="md:flex  justify-center items-center  hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-1 cursor-pointer font-semibold hidden"
               onClick={handleClick}
             >
               {link.path ? (
@@ -40,26 +40,24 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
                   {link.linkName}
                 </NavLink>
               ) : (
-                <div className="md:p-2 group z-30 ">
+                <div className="md:py-1 z-40 hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-1  group ">
                   <div className="">
-                    <li className="hover:text-cardHoverColor hover:bg-[#DF4D05] rounded px-3 py-1 group-hover:text-cardHoverColor">
-                      <h1 className="text-[#FFFFFF] ">{link.linkName} </h1>
+                    <li className=" rounded-full  hover:text-[#fff] px-3 py-1 group-hover:text-cardHoverColor">
+                      {link.linkName}
                     </li>
-                    <div className="absolute transition-all  hidden md:group-hover:block hover:block bg-gray-50 top-12 rounded ">
+                    <div className="absolute  transition-all text-black hidden md:group-hover:block hover:block bg-gray-50 top-14 left-40 rounded ">
                       {link.submenu &&
                         link.subLinks.map((subLink) => {
                           return (
                             <div
                               key={subLink.heading}
-                              className="w-[140px] py-2 hover:bg-gray-300 rounded-sm border group/edit"
+                              onMouseEnter={(e) =>
+                                setHeadingName(e.target.innerText)
+                              }
+                              className="w-[140px] duration-500 py-1 hover:text-white hover:bg-gray-600 rounded-sm border group/edit"
                             >
-                              <div className="w-full flex flex-col justify-start ml-[-20px]">
-                                <div
-                                  className="flex justify-around w-full mx-[26px] hover:text-cardHoverColor group-hover/edit:text-cardHoverColor"
-                                  onMouseEnter={(e) =>
-                                    setHeadingName(e.target.innerText)
-                                  }
-                                >
+                              <div className="w-full flex flex-col justify-start  ml-[-20px]">
+                                <div className="flex justify-around w-full mx-[26px]  group-hover/edit:text-cardHoverColor">
                                   <h1>{subLink.heading}</h1>
                                   <FaArrowRight className="mt-1" />
                                 </div>

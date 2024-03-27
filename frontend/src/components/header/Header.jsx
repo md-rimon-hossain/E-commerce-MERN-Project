@@ -31,14 +31,14 @@ const Header = () => {
   
 
   return (
-    <header className="h-[80px] flex items-center justify-center bg-[#2C1E1E] ">
+    <header className="h-[80px] flex items-center gap-1 justify-center shadow bg-[#fff] ">
       <Container>
         <nav>
           {/* bottom navbar  */}
           <div className="bg-inherit ">
             <div className="  flex items-center ">
               <div className="flex-1">
-                <div className="md:hidden text-[#ffffff] block cursor-pointer">
+                <div className="md:hidden text-[#000] block cursor-pointer">
                   {showNavbar ? (
                     <FaXmark
                       className="text-2xl"
@@ -59,11 +59,18 @@ const Header = () => {
                 </div>
 
                 <ul className="md:flex   justify-center text-center  items-center hidden">
-                  <div className="text-[#ffffff]">
+                  <div className="text-[#000] px-2">
                     <Link to={"/"}>
                       <h1>Rimon</h1>
                     </Link>
                   </div>
+                  <Link to={"/"}>
+                    <div className="flex justify-center hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer ">
+                      <button className="text-md py-2 text-[18px] ">
+                        Home
+                      </button>
+                    </div>
+                  </Link>
                   <NavLinks
                     showNavbar={showNavbar}
                     setShowNavbar={setShowNavbar}
@@ -72,7 +79,7 @@ const Header = () => {
               </div>
 
               <div className=" w-full flex items-center justify-center">
-                <form className="flex  justify-center items-center relative w-[90%] lg:w-[65%]">
+                <form className="flex  justify-center items-center relative w-[90%] lg:w-[95%]">
                   <input
                     type="search"
                     name="search"
@@ -81,11 +88,11 @@ const Header = () => {
                     onFocus={() => setShowNavbar(false)}
                     placeholder="Search any item"
                     autoComplete="false"
-                    className=" w-full  text-[17px] h-[45px] text-black bg-white outline-none px-4  md:font-medium border border-borderColor rounded-full focus:ring-1 ring-buttonColor"
+                    className=" w-full   text-[17px] h-[45px] text-black bg-white  px-4  outline-none md:font-medium border border-gray-400 rounded-full focus:ring-1 ring-buttonColor"
                   />
                   <button
                     type="submit"
-                    className="bg-[#FFE1D2] absolute ro right-0  md:p-[8px] rounded-full text-[#F85606] font-extrabold p-[8px]"
+                    className="bg-[#fff] absolute ro right-0  md:p-[8px] rounded-full text-[#F85606] font-extrabold p-[8px]"
                   >
                     <IoSearchSharp className="font-bold text-[25px] lg:text-[25px]" />
                   </button>
@@ -93,9 +100,9 @@ const Header = () => {
               </div>
 
               <div className=" px-3">
-                <div className="md:hidden text-[#fff] block">
+                <div className="md:hidden text-[#000] block">
                   {showDetails ? (
-                    <div className="p-[3px] border  border-gray-500 text-[#fff] rounded-md">
+                    <div className="p-[3px] border  border-gray-500 text-[#000] rounded-md">
                       <FaXmark
                         className="text-2xl  cursor-pointer"
                         onClick={() => {
@@ -119,11 +126,11 @@ const Header = () => {
 
                 <div className="md:flex justify-between items-center gap-2  sm:text-[13px] hidden lg:text-[17px]">
                   <Link to={"/login"}>
-                    <div className="flex justify-center font-semibold hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                    <div className="flex justify-center font-semibold  hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
                       {authStatus ? (
                         <LogoutBtn />
                       ) : (
-                        <button className="text-md py-2 font-semibold text-[18px] text-[#ffffff]">
+                        <button className="text-md py-2 font-semibold text-[18px] ">
                           Login
                         </button>
                       )}
@@ -132,8 +139,8 @@ const Header = () => {
 
                   {authStatus && loginUserData.isAdmin ? (
                     <Link to={"/admin-dashboard"}>
-                      <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                        <button className="text-md py-2 text-[18px] text-[#ffffff]">
+                      <div className="flex justify-center hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                        <button className="text-md py-2 text-[18px] ">
                           Dashboard
                         </button>
                       </div>
@@ -142,8 +149,8 @@ const Header = () => {
 
                   {!authStatus && (
                     <Link to={"/register"}>
-                      <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                        <button className="text-md py-2 text-[18px] text-[#ffffff]">
+                      <div className="flex justify-center hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                        <button className="text-md py-2 text-[18px] text-[#000] hover:text-[#fff]">
                           SignUp
                         </button>
                       </div>
@@ -152,9 +159,9 @@ const Header = () => {
 
                   {authStatus && (
                     <Link to={"/cart"}>
-                      <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                        <BsCart className="lg:text-xl text-[17px] text-[#fff]" />
-                        <button className="text-md py-2 font-semibold text-[18px] text-[#ffffff]">
+                      <div className="flex justify-center hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                        <BsCart className="lg:text-xl text-[17px] " />
+                        <button className="text-md py-2 font-semibold text-[18px]">
                           Cart
                         </button>
                       </div>
@@ -163,7 +170,7 @@ const Header = () => {
 
                   {authStatus && loginUserData ? (
                     <Link to={"/user-profile"} className="w-[100px] font-bold">
-                      <UserProfileBtn className={"text-white"} />
+                      <UserProfileBtn className={"text-black "} />
                     </Link>
                   ) : null}
                 </div>
@@ -263,7 +270,7 @@ const Header = () => {
                 </Link>
               ) : null}
             </div> */}
-            <UserRightBarMobile/>
+            <UserRightBarMobile />
           </div>
         </nav>
       </Container>

@@ -7,7 +7,7 @@ function UserProfileBtn({  className = "" }) {
   return (
     <div title="Your Profile" className="flex items-center flex-col">
       <img
-        className="inline-block h-10 w-10 rounded-full"
+        className="inline-block duration-200 hover:outline-dotted h-10 w-10 rounded-full"
         src={userDefaultImage}
         alt="User Profile"
       />
