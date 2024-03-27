@@ -5,7 +5,7 @@ function Card() {
         <img
           src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJsb2d8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
           alt="Laptop"
-          className="h-[200px] w-full rounded-md object-fill "
+          className={`h-[200px]  hover:scale-105 duration-500 w-full rounded-md object-contain `}
         />
         <div className="">
           <h1 className="text-lg font-bold text-gray-800">About Macbook</h1>

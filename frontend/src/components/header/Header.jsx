@@ -20,6 +20,7 @@ import { useSelector } from 'react-redux';
 
 import LogoutBtn from "../LogoutBtn"
 import UserProfileBtn from "../UserProfileBtn";
+import UserRightBarMobile from '../UserRightBarMobile';
 
 const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -27,7 +28,7 @@ const Header = () => {
 
   const { authStatus, loginUserData } = useSelector((state) => state.auth);
   console.log(authStatus);
-
+  
 
   return (
     <header className="h-[80px] flex items-center justify-center bg-[#2C1E1E] ">
@@ -37,10 +38,10 @@ const Header = () => {
           <div className="bg-inherit ">
             <div className="  flex items-center ">
               <div className="flex-1">
-                <div className="md:hidden block cursor-pointer">
+                <div className="md:hidden text-[#ffffff] block cursor-pointer">
                   {showNavbar ? (
                     <FaXmark
-                      className="text-xl"
+                      className="text-2xl"
                       onClick={() => {
                         setShowNavbar(!showNavbar);
                         showDetails && setShowDetails(!showDetails);
@@ -48,7 +49,7 @@ const Header = () => {
                     />
                   ) : (
                     <FaBars
-                      className="text-xl "
+                      className="text-2xl "
                       onClick={() => {
                         setShowNavbar(!showNavbar);
                         showDetails && setShowDetails(!showDetails);
@@ -71,29 +72,32 @@ const Header = () => {
               </div>
 
               <div className=" w-full flex items-center justify-center">
-                <form className="flex justify-center items-center relative w-[90%] lg:w-[65%]">
+                <form className="flex  justify-center items-center relative w-[90%] lg:w-[65%]">
                   <input
                     type="search"
                     name="search"
                     id="search"
+                    required
+                    onFocus={() => setShowNavbar(false)}
                     placeholder="Search any item"
-                    className=" w-full outline-none px-2 md:text-md text-sm md:font-medium border border-borderColor rounded-md lg:p-1.5 p-1 focus:ring-1 ring-buttonColor"
+                    autoComplete="false"
+                    className=" w-full  text-[17px] h-[45px] text-black bg-white outline-none px-4  md:font-medium border border-borderColor rounded-full focus:ring-1 ring-buttonColor"
                   />
                   <button
                     type="submit"
-                    className="bg-[#FFE1D2] absolute right-0 md:p-[8px] rounded-r-md text-[#F85606] font-extrabold p-[8px]"
+                    className="bg-[#FFE1D2] absolute ro right-0  md:p-[8px] rounded-full text-[#F85606] font-extrabold p-[8px]"
                   >
-                    <IoSearchSharp className="font-bold text-[13px] lg:text-[17px]" />
+                    <IoSearchSharp className="font-bold text-[25px] lg:text-[25px]" />
                   </button>
                 </form>
               </div>
 
               <div className=" px-3">
-                <div className="md:hidden block">
+                <div className="md:hidden text-[#fff] block">
                   {showDetails ? (
-                    <div className="p-[3px] border border-gray-500 rounded-md">
+                    <div className="p-[3px] border  border-gray-500 text-[#fff] rounded-md">
                       <FaXmark
-                        className="text-xl cursor-pointer"
+                        className="text-2xl  cursor-pointer"
                         onClick={() => {
                           setShowDetails(!showDetails);
                           showNavbar && setShowNavbar(!showNavbar);
@@ -103,7 +107,7 @@ const Header = () => {
                   ) : (
                     <div className="p-[3px] border border-gray-500 rounded-md">
                       <BsThreeDots
-                        className="text-xl cursor-pointer"
+                        className="text-2xl cursor-pointer"
                         onClick={() => {
                           setShowDetails(!showDetails);
                           showNavbar && setShowNavbar(!showNavbar);
@@ -145,14 +149,18 @@ const Header = () => {
                       </div>
                     </Link>
                   )}
-                  <Link to={"/cart"}>
-                    <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                      <BsCart className="lg:text-xl text-[17px] text-[#fff]" />
-                      <button className="text-md py-2 font-semibold text-[18px] text-[#ffffff]">
-                        Cart
-                      </button>
-                    </div>
-                  </Link>
+
+                  {authStatus && (
+                    <Link to={"/cart"}>
+                      <div className="flex justify-center hover:bg-[#DF4D05] px-2 rounded items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                        <BsCart className="lg:text-xl text-[17px] text-[#fff]" />
+                        <button className="text-md py-2 font-semibold text-[18px] text-[#ffffff]">
+                          Cart
+                        </button>
+                      </div>
+                    </Link>
+                  )}
+
                   {authStatus && loginUserData ? (
                     <Link to={"/user-profile"} className="w-[100px] font-bold">
                       <UserProfileBtn className={"text-white"} />
@@ -198,11 +206,11 @@ const Header = () => {
 
           {/*Profile details for mobile size*/}
           <div
-            className={`md:hidden absolute pb-2 right-[45px] w-[150px] rounded-md  bg-gray-100 ${
+            className={`md:hidden absolute pb-2 left-auto right-[10px] w-[150px] rounded-md  bg-gray-100 ${
               showDetails ? "block" : "hidden"
             }`}
           >
-            <div className=" flex  w-full flex-col justify-start items-center ">
+            {/* <div className=" flex  w-full flex-col justify-start items-center ">
               <Link to={"/login"} onClick={() => setShowDetails(!showDetails)}>
                 <div className="flex  items-center gap-1  cursor-pointer mb-1 ">
                   {authStatus ? (
@@ -254,7 +262,8 @@ const Header = () => {
                   />
                 </Link>
               ) : null}
-            </div>
+            </div> */}
+            <UserRightBarMobile/>
           </div>
         </nav>
       </Container>

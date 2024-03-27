@@ -129,7 +129,7 @@ const processRegister = async (req, res, next) => {
 
     return successResponseHandler(res, {
       statusCode: 200,
-      message: `please go to your ${email} for completing your registration process `,
+      message: `please go to your ${email} address for completing your registration process `,
       payload: {
         token,
       },

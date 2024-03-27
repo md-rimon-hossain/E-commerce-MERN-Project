@@ -9,14 +9,14 @@ const { jwtAccessKey, JwtRefreshKey, jwtActivationKey } = require("../secret");
 const handleLogin = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    
+
     // Check if user exists
-    console.log(email)
-    const user = await User.findOne({ email })
+    console.log(email);
+    const user = await User.findOne({ email });
     if (!user) {
       throw createError(404, "User with this email does not exist.");
     }
-    
+
     // // Compare passwords
     const isPasswordMatch = await bcrypt.compare(password, user.password);
     if (!isPasswordMatch) {
@@ -29,19 +29,18 @@ const handleLogin = async (req, res, next) => {
     }
 
     // create access token
-    const accessToken = createJSONWebToken({ user }, jwtAccessKey, "30s");
+    const accessToken = createJSONWebToken({ user }, jwtAccessKey, "20m");
 
     // create http cookie
     res.cookie("accessToken", accessToken, {
-      // maxAge: 10 * 60 * 1000, // 10 minutes
-      maxAge: 30 * 1000,
+      maxAge: 20 * 60 * 1000, // 20 minutes 1200000
       httpOnly: true,
       secure: true,
       sameSite: "none",
     });
 
     // create refresh token
-    const refreshToken = createJSONWebToken({ user }, JwtRefreshKey , "7d");
+    const refreshToken = createJSONWebToken({ user }, JwtRefreshKey, "7d");
 
     // create http cookie
     res.cookie("refreshToken", refreshToken, {
@@ -50,18 +49,16 @@ const handleLogin = async (req, res, next) => {
       secure: true,
       sameSite: "none",
     });
-    
-    const userWithoutPassword =  user.toObject()
-    delete userWithoutPassword.password
 
+    const userWithoutPassword = user.toObject();
+    delete userWithoutPassword.password;
 
     // Success response
     return successResponseHandler(res, {
       statusCode: 200,
       message: "User logged in successfully.",
-      payload:  userWithoutPassword ,
+      payload: userWithoutPassword,
     });
-    
   } catch (error) {
     next(error);
   }
@@ -75,6 +72,7 @@ const handleLogout = async (req, res, next) => {
       secure: true,
       sameSite: "none",
     });
+
     res.clearCookie("refreshToken", {
       httpOnly: true,
       secure: true,
@@ -110,12 +108,11 @@ const handleRefreshToken = async (req, res, next) => {
     }
 
     // create access token again
-    const accessToken = createJSONWebToken( {user:decodedToken.user}, jwtAccessKey, "10m");
+    const accessToken = createJSONWebToken( {user: decodedToken?.user}, jwtAccessKey, "20m");
 
     // create http cookie
     res.cookie("accessToken", accessToken, {
-      maxAge: 10 * 60 * 1000, // 10 minutes
-
+      maxAge: 20 * 60 * 1000, // 20 minutes
       httpOnly: true,
       secure: true,
       sameSite: "none",

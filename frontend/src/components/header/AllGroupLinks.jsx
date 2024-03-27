@@ -24,7 +24,7 @@ const AllGroupLinks = ({
       <div
         className={`hidden md:group-hover/edit:block absolute left-[141px] top-4 bg-gray-50 p-3 rounded-md lg:w-[600px] w-[400px] shadow-lg shadow-gray-500`}
       >
-        <div className="grid lg:grid-cols-3 gap-5 text-left grid-cols-2">
+        <div className="grid lg:grid-cols-2 gap-5 text-left grid-cols-2">
           {subLink.heading === headingName &&
             subLink.subLinkElements.map((subLinkElement, index) => {
               return (

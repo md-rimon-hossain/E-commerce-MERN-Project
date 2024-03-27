@@ -25,7 +25,7 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
         AllLinksData.map((link) => (
           <div key={link.id}>
             <div
-              className="md:flex justify-center items-center mx-3 px-2 cursor-pointer font-semibold my-2 hidden"
+              className="md:flex  justify-center items-center mx-3 px-2 cursor-pointer font-semibold my-2 hidden"
               onClick={handleClick}
             >
               {link.path ? (
@@ -41,11 +41,11 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
                 </NavLink>
               ) : (
                 <div className="md:p-2 group z-30 ">
-                  <div className=""> 
+                  <div className="">
                     <li className="hover:text-cardHoverColor hover:bg-[#DF4D05] rounded px-3 py-1 group-hover:text-cardHoverColor">
                       <h1 className="text-[#FFFFFF] ">{link.linkName} </h1>
                     </li>
-                    <div className="absolute  hidden md:group-hover:block hover:block bg-gray-50 top-12 rounded ">
+                    <div className="absolute transition-all  hidden md:group-hover:block hover:block bg-gray-50 top-12 rounded ">
                       {link.submenu &&
                         link.subLinks.map((subLink) => {
                           return (
@@ -156,8 +156,8 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
                                     className={
                                       openSubDropdown &&
                                       headingName === subLink.heading
-                                        ? "flex justify-between w-full bg-orange-100 px-2 rounded-full "
-                                        : " bg-inherit flex justify-between px-2 w-full"
+                                        ? "flex justify-between duration-300 w-full bg-orange-100 px-2 rounded-full "
+                                        : " bg-inherit flex duration-300 justify-between px-2 w-full"
                                     }
                                   >
                                     <h1
