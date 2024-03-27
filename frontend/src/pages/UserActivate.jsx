@@ -36,6 +36,7 @@ function UserActivate() {
         }
       }
     })();
+    
   }, []);
 
   if (token) {

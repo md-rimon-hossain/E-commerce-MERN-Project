@@ -129,7 +129,7 @@ const processRegister = async (req, res, next) => {
 
     return successResponseHandler(res, {
       statusCode: 200,
-      message: `please go to your ${email} for completing your registration process `,
+      message: `please go to your ${email} address for completing your registration process `,
       payload: {
         token,
       },
@@ -151,7 +151,6 @@ const activateUserAccount = async (req, res, next) => {
     
     try {
       const decoded = jwt.verify(token, jwtActivationKey);
-      console.log("|fjldsfjk");
       if (!decoded) {
         throw createError(401, "Unable to verify User");
       }
@@ -262,6 +261,9 @@ const forgetPassword = async (req, res, next) => {
 const resetPassword = async (req, res, next) => {
   try {
     const { token, password } = req.body;
+
+    
+
     await handleResetPasswordByToken(token, password);
 
     return successResponseHandler(res, {
