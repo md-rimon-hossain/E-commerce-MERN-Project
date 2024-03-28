@@ -1,6 +1,5 @@
 // import React from 'react'
 import { NavLink } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
 import { FiMinus } from "react-icons/fi";
 import { LuPlusCircle } from "react-icons/lu";
 
@@ -54,18 +53,17 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
                               onMouseEnter={(e) =>
                                 setHeadingName(e.target.innerText)
                               }
-                              className="w-[140px] duration-500 py-1 hover:text-white hover:bg-gray-600 rounded-sm border group/edit"
+                              className="w-[140px] duration-500 py-1  hover:bg-[#DBEAFE] rounded border group/edit"
                             >
-                              <div className="w-full flex flex-col justify-start  ml-[-20px]">
-                                <div className="flex justify-around w-full mx-[26px]  group-hover/edit:text-cardHoverColor">
+                              <div className="w-full flex flex-col justify-start  ">
+                                <div className="flex justify-around w-full   group-hover/edit:text-cardHoverColor">
                                   <h1>{subLink.heading}</h1>
-                                  <FaArrowRight className="mt-1" />
                                 </div>
                               </div>
-                              <AllGroupLinks
+                              {/* <AllGroupLinks
                                 subLink={subLink}
                                 headingName={headingName}
-                              />
+                              /> */}
                             </div>
                           );
                         })}
