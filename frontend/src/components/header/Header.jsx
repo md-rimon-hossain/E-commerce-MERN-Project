@@ -22,6 +22,8 @@ import LogoutBtn from "../LogoutBtn"
 import UserProfileBtn from "../UserProfileBtn";
 import UserRightBarMobile from '../UserRightBarMobile';
 
+import logo from "../../../public/images/logo.jpg"
+
 const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
@@ -34,7 +36,7 @@ const Header = () => {
     <header className="h-[80px] flex items-center gap-1 justify-center shadow bg-[#fff] ">
       <Container>
         <nav>
-          {/* bottom navbar  */}
+          {/*  navbar  */}
           <div className="bg-inherit ">
             <div className="  flex items-center ">
               <div className="flex-1">
@@ -61,16 +63,15 @@ const Header = () => {
                 <ul className="md:flex   justify-center text-center  items-center hidden">
                   <div className="text-[#000] px-2">
                     <Link to={"/"}>
-                      <h1>Rimon</h1>
+                      <h1 className="text-2xl font-bold text-[#468CF7] w-[125px]">
+                        SHOES
+                     
+                        STORE
+                      </h1>
+                      {/* <img src={logo} alt="Logo"  className='scale-100'/> */}
                     </Link>
                   </div>
-                  <Link to={"/"}>
-                    <div className="flex justify-center hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer ">
-                      <button className="text-md py-2 text-[18px] ">
-                        Home
-                      </button>
-                    </div>
-                  </Link>
+
                   <NavLinks
                     showNavbar={showNavbar}
                     setShowNavbar={setShowNavbar}
@@ -178,8 +179,6 @@ const Header = () => {
             </div>
           </div>
 
-          {/* small size */}
-
           {/* upper navbar for mobile size  */}
           <div className=" md:hidden overflow-x-hidden overflow-y-scroll ">
             <div
@@ -213,29 +212,38 @@ const Header = () => {
 
           {/*Profile details for mobile size*/}
           <div
-            className={`md:hidden absolute pb-2 left-auto right-[10px] w-[150px] rounded-md  bg-gray-100 ${
+            className={`md:hidden  absolute pb-2 left-auto right-[10px] w-[200px] rounded-md  bg-gray-100 ${
               showDetails ? "block" : "hidden"
             }`}
           >
-            {/* <div className=" flex  w-full flex-col justify-start items-center ">
-              <Link to={"/login"} onClick={() => setShowDetails(!showDetails)}>
+            <div className=" flex duration-500  w-full flex-col justify-start items-center ">
+              <Link
+                to={"/login"}
+                className="w-full border
+                 flex items-center justify-center py-2"
+                onClick={() => setShowDetails(!showDetails)}
+              >
                 <div className="flex  items-center gap-1  cursor-pointer mb-1 ">
                   {authStatus ? (
                     <LogoutBtn
-                      className={"text-black hover:text-orange-500 text-center"}
+                      className={
+                        "text-black py-0 hover:text-orange-500 text-center"
+                      }
                     />
                   ) : (
-                    <span className="text-md">Login</span>
+                    <span className="text-md text-black">Login</span>
                   )}
                 </div>
               </Link>
               {authStatus && loginUserData.isAdmin ? (
                 <Link
                   to={"/admin-dashboard"}
+                  className="w-full border
+                 flex items-center  py-2 justify-center"
                   onClick={() => setShowDetails(!showDetails)}
                 >
                   <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
-                    <span className="text-md hover:text-orange-500">
+                    <span className="text-md text-black hover:text-orange-500">
                       Dashboard
                     </span>
                   </div>
@@ -244,33 +252,43 @@ const Header = () => {
               {!authStatus && (
                 <Link
                   to={"/register"}
+                  className="w-full border
+                 flex items-center justify-center  py-2"
                   onClick={() => setShowDetails(!showDetails)}
                 >
                   <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
-                    <span className="text-md hover:text-orange-500">
+                    <span className="text-md text-black hover:text-orange-500">
                       SignUp
                     </span>
                   </div>
                 </Link>
               )}
-              <Link to={"/cart"} onClick={() => setShowDetails(!showDetails)}>
-                <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
-                  <span className="text-md hover:text-orange-500">Cart</span>
+              <Link
+                to={"/cart"}
+                className="w-full border
+                 flex items-center justify-center  py-2"
+                onClick={() => setShowDetails(!showDetails)}
+              >
+                <div className="flex text-black hover:text-orange-500 items-center gap-1 cursor-pointer mb-1">
+                  <BsCart className="lg:text-xl text-[17px] " />
+                  <span className="text-md ">Cart</span>
                 </div>
               </Link>
               {authStatus ? (
                 <Link
                   to={"/user-profile"}
+                  className="w-full border
+                 flex items-center justify-center  py-2"
                   onClick={() => setShowDetails(!showDetails)}
                 >
                   <UserProfileBtn
                     username={loginUserData.name}
-                    className={"hover:text-orange-500"}
+                    className={"hover:text-orange-500 text-black"}
                   />
                 </Link>
               ) : null}
-            </div> */}
-            <UserRightBarMobile />
+            </div>
+            {/* <UserRightBarMobile /> */}
           </div>
         </nav>
       </Container>
