@@ -4,6 +4,7 @@ import { logout } from "../store/authSlice";
 import { useDispatch } from "react-redux";
 import { apiService } from "../api/apiService";
 import { useNavigate } from "react-router-dom";
+import { LogOut } from "lucide-react";
 
 function LogoutBtn({ className = "" }) {
   const dispatch = useDispatch();
@@ -28,9 +29,10 @@ function LogoutBtn({ className = "" }) {
   return (
     <>
       <button
-        className={`text-md text-[18px] py-2 text-[#000] hover:text-[#fff] ${className}`}
+        className={`text-sm w-full transform text-left rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 font-medium ${className}`}
         onClick={handleLogout}
       >
+        <LogOut className="inline-block mr-2" />
         Logout
       </button>
     </>

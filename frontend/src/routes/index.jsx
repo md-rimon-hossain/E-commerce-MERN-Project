@@ -16,6 +16,7 @@ import DashBoard from "../pages/DashBoard.jsx";
 import AuthLayout from "../components/AuthLayout.jsx";
 import UserActivate from "../pages/UserActivate.jsx";
 import ResetPassword from "../pages/ResetPassword.jsx";
+import { ProductOverview } from "../pages/ProductsOverview.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,6 @@ const router = createBrowserRouter([
         path: "/forget-password",
         element: <ForgetPassword />,
       },
-
       {
         path: "/login",
         element: (
@@ -50,9 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: (
-          <AuthLayout authentication>
             <Cart />
-          </AuthLayout>
         ),
       },
       {
@@ -77,6 +75,10 @@ const router = createBrowserRouter([
         path: "/product",
         element: <Product />,
       },
+      {
+        path: "/products",
+        element: <ProductOverview/>
+      }
     ],
   },
   {

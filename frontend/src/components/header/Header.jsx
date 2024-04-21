@@ -20,20 +20,21 @@ import { useSelector } from 'react-redux';
 
 import LogoutBtn from "../LogoutBtn"
 import UserProfileBtn from "../UserProfileBtn";
-import UserRightBarMobile from '../UserRightBarMobile';
-
-import logo from "../../../public/images/logo.jpg"
+import { UserProfileSidebar } from "../UserProfileSidebar/UserProfileSidebar";
+import { LogIn } from "lucide-react";
 
 const Header = () => {
+  const { authStatus, loginUserData } = useSelector((state) => state.auth);
+  console.log(authStatus);
+
   const [showNavbar, setShowNavbar] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
-  const { authStatus, loginUserData } = useSelector((state) => state.auth);
-  console.log(authStatus);
-  
+  // User profile sidebar
+  const [showUserProfileSidebar, setShowUserProfileSidebar] = useState(false);
 
   return (
-    <header className="h-[80px] flex items-center gap-1 justify-center shadow bg-[#fff] ">
+    <header className="h-[80px] relative flex items-center gap-1 justify-center shadow bg-[#EEB1B9] ">
       <Container>
         <nav>
           {/*  navbar  */}
@@ -43,7 +44,7 @@ const Header = () => {
                 <div className="md:hidden text-[#000] block cursor-pointer">
                   {showNavbar ? (
                     <FaXmark
-                      className="text-2xl"
+                      className="text-2xl text-gray-600"
                       onClick={() => {
                         setShowNavbar(!showNavbar);
                         showDetails && setShowDetails(!showDetails);
@@ -51,7 +52,7 @@ const Header = () => {
                     />
                   ) : (
                     <FaBars
-                      className="text-2xl "
+                      className="text-2xl text-gray-600"
                       onClick={() => {
                         setShowNavbar(!showNavbar);
                         showDetails && setShowDetails(!showDetails);
@@ -64,9 +65,7 @@ const Header = () => {
                   <div className="text-[#000] px-2">
                     <Link to={"/"}>
                       <h1 className="text-2xl font-bold text-[#468CF7] w-[125px]">
-                        SHOES
-                     
-                        STORE
+                        SHOES STORE
                       </h1>
                       {/* <img src={logo} alt="Logo"  className='scale-100'/> */}
                     </Link>
@@ -89,7 +88,7 @@ const Header = () => {
                     onFocus={() => setShowNavbar(false)}
                     placeholder="Search any item"
                     autoComplete="false"
-                    className=" w-full   text-[17px] h-[45px] text-black bg-white  px-4  outline-none md:font-medium border border-gray-400 rounded-full focus:ring-1 ring-buttonColor"
+                    className=" w-full   text-[17px] h-[45px] text-black bg-white  px-4  outline-none md:font-medium border rounded-full focus:ring-1"
                   />
                   <button
                     type="submit"
@@ -101,9 +100,9 @@ const Header = () => {
               </div>
 
               <div className=" px-3">
-                <div className="md:hidden text-[#000] block">
+                <div className="md:hidden text-gray-600 block">
                   {showDetails ? (
-                    <div className="p-[3px] border  border-gray-500 text-[#000] rounded-md">
+                    <div className="p-[3px] border  border-gray-500 text-gray-600 rounded-md">
                       <FaXmark
                         className="text-2xl  cursor-pointer"
                         onClick={() => {
@@ -126,17 +125,15 @@ const Header = () => {
                 </div>
 
                 <div className="md:flex justify-between items-center gap-2  sm:text-[13px] hidden lg:text-[17px]">
-                  <Link to={"/login"}>
-                    <div className="flex justify-center font-semibold  hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                      {authStatus ? (
-                        <LogoutBtn />
-                      ) : (
+                  {!authStatus && (
+                    <Link to={"/login"}>
+                      <div className="flex justify-center font-semibold   duration-200   text-[#000] hover:text-[#468CF7]  px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
                         <button className="text-md py-2 font-semibold text-[18px] ">
                           Login
                         </button>
-                      )}
-                    </div>
-                  </Link>
+                      </div>
+                    </Link>
+                  )}
 
                   {authStatus && loginUserData.isAdmin ? (
                     <Link to={"/admin-dashboard"}>
@@ -150,30 +147,40 @@ const Header = () => {
 
                   {!authStatus && (
                     <Link to={"/register"}>
-                      <div className="flex justify-center hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                        <button className="text-md py-2 text-[18px] text-[#000] hover:text-[#fff]">
+                      <div className="flex justify-center    text-[#000]  px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                        <button className="text-md py-2 text-[18px] font-semibold text-[#000] duration-200  hover:text-[#468CF7]">
                           SignUp
                         </button>
                       </div>
                     </Link>
                   )}
 
-                  {authStatus && (
-                    <Link to={"/cart"}>
-                      <div className="flex justify-center hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                        <BsCart className="lg:text-xl text-[17px] " />
-                        <button className="text-md py-2 font-semibold text-[18px]">
-                          Cart
-                        </button>
-                      </div>
-                    </Link>
-                  )}
+                  <Link to={"/cart"}>
+                    <div className="flex justify-center  duration-200 rounded-full  text-[#000] hover:text-[#468CF7] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                      <BsCart className="lg:text-xl text-[17px] " />
+                      <button className="text-md py-2 font-semibold text-[18px]">
+                        Cart
+                      </button>
+                    </div>
+                  </Link>
 
                   {authStatus && loginUserData ? (
-                    <Link to={"/user-profile"} className="w-[100px] font-bold">
+                    <Link
+                      onClick={() =>
+                        setShowUserProfileSidebar(!showUserProfileSidebar)
+                      }
+                      className="w-[100px] font-bold"
+                    >
                       <UserProfileBtn className={"text-black "} />
                     </Link>
                   ) : null}
+
+                  {showUserProfileSidebar && (
+                    <UserProfileSidebar
+                      showUserProfileSidebar={showUserProfileSidebar}
+                      setShowUserProfileSidebar={setShowUserProfileSidebar}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -212,7 +219,7 @@ const Header = () => {
 
           {/*Profile details for mobile size*/}
           <div
-            className={`md:hidden  absolute pb-2 left-auto right-[10px] w-[200px] rounded-md  bg-gray-100 ${
+            className={`md:hidden shadow-md z-50 absolute pb-2 left-auto right-[10px] w-[200px] rounded-md  bg-white ${
               showDetails ? "block" : "hidden"
             }`}
           >
@@ -223,15 +230,15 @@ const Header = () => {
                  flex items-center justify-center py-2"
                 onClick={() => setShowDetails(!showDetails)}
               >
-                <div className="flex  items-center gap-1  cursor-pointer mb-1 ">
+                <div className="flex w-full items-center gap-1  cursor-pointer mb-1 ">
                   {authStatus ? (
                     <LogoutBtn
-                      className={
-                        "text-black py-0 hover:text-orange-500 text-center"
-                      }
+                      className={"py-0 hover:text-[#468CF7] text-center"}
                     />
                   ) : (
-                    <span className="text-md text-black">Login</span>
+                    <span className="text-md w-full text-center font-semibold text-gray-600">
+                      Login
+                    </span>
                   )}
                 </div>
               </Link>
@@ -243,7 +250,7 @@ const Header = () => {
                   onClick={() => setShowDetails(!showDetails)}
                 >
                   <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
-                    <span className="text-md text-black hover:text-orange-500">
+                    <span className="text-md font-semibold text-gray-600 hover:text-[#468CF7]">
                       Dashboard
                     </span>
                   </div>
@@ -257,7 +264,7 @@ const Header = () => {
                   onClick={() => setShowDetails(!showDetails)}
                 >
                   <div className="flex  items-center gap-1 cursor-pointer mb-1 hover:text-cardHoverColor">
-                    <span className="text-md text-black hover:text-orange-500">
+                    <span className="text-md font-semibold text-gray-600 hover:text-[#468CF7]">
                       SignUp
                     </span>
                   </div>
@@ -269,7 +276,7 @@ const Header = () => {
                  flex items-center justify-center  py-2"
                 onClick={() => setShowDetails(!showDetails)}
               >
-                <div className="flex text-black hover:text-orange-500 items-center gap-1 cursor-pointer mb-1">
+                <div className="flex font-semibold text-gray-600 hover:text-[#468CF7] items-center gap-1 cursor-pointer mb-1">
                   <BsCart className="lg:text-xl text-[17px] " />
                   <span className="text-md ">Cart</span>
                 </div>
@@ -283,7 +290,9 @@ const Header = () => {
                 >
                   <UserProfileBtn
                     username={loginUserData.name}
-                    className={"hover:text-orange-500 text-black"}
+                    className={
+                      "hover:text-[#468CF7] font-semibold text-gray-600"
+                    }
                   />
                 </Link>
               ) : null}
