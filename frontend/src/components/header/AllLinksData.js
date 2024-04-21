@@ -5,7 +5,7 @@ const AllLinksData = [
     submenu: true,
     subLinks: [
       {
-        heading: "Laptop",
+        heading: "man",
         subLinkElements: [
           {
             linkHeader: "Fashion for Men",
@@ -122,7 +122,7 @@ const AllLinksData = [
         ],
       },
       {
-        heading: "Phone",
+        heading: "women",
         subLinkElements: [
           {
             linkHeader: "Electronics for Men",
@@ -355,123 +355,123 @@ const AllLinksData = [
       //     }
       //   ]
       // },
-      {
-        heading: "shoe",
-        subLinkElements: [
-          {
-            linkHeader: "Book's for Men",
-            subLink: [
-              {
-                subLinkHeader: "Top Wear",
-                links: [
-                  {
-                    name: "T-shirt",
-                    path: "/t-shirt",
-                  },
-                  {
-                    name: "Casual Shirt",
-                    path: "/casual-shirt",
-                  },
-                  {
-                    name: "Formal Shirt",
-                    path: "/formal-shirt",
-                  },
-                ],
-              },
-              {
-                subLinkHeader: "Bottom Wear",
-                links: [
-                  {
-                    name: "Full Pant",
-                    path: "/full-pant",
-                  },
-                  {
-                    name: "Short Pant",
-                    path: "/short-pant",
-                  },
-                  {
-                    name: "Under Wear",
-                    path: "/under-wear",
-                  },
-                ],
-              },
-              {
-                subLinkHeader: "Inner Wear",
-                links: [
-                  {
-                    name: "Short T-Shirt",
-                    path: "/short-t-shirt",
-                  },
-                  {
-                    name: "Short Pant",
-                    path: "/short-pant",
-                  },
-                  {
-                    name: "Under Wear",
-                    path: "/under-wear",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            linkHeader: "Fashion for Women",
-            subLink: [
-              {
-                subLinkHeader: "Top Wear",
-                links: [
-                  {
-                    name: "T-shirt",
-                    path: "/t-shirt",
-                  },
-                  {
-                    name: "Casual Shirt",
-                    path: "/casual-shirt",
-                  },
-                  {
-                    name: "Formal Shirt",
-                    path: "/formal-shirt",
-                  },
-                ],
-              },
-              {
-                subLinkHeader: "Bottom Wear",
-                links: [
-                  {
-                    name: "Full Pant",
-                    path: "/full-pant",
-                  },
-                  {
-                    name: "Short Pant",
-                    path: "/short-pant",
-                  },
-                  {
-                    name: "Under Wear",
-                    path: "/under-wear",
-                  },
-                ],
-              },
-              {
-                subLinkHeader: "Inner Wear",
-                links: [
-                  {
-                    name: "Short T-Shirt",
-                    path: "/short-t-shirt",
-                  },
-                  {
-                    name: "Short Pant",
-                    path: "/short-pant",
-                  },
-                  {
-                    name: "Under Wear",
-                    path: "/under-wear",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
+      // {
+      //   heading: "shoe",
+      //   subLinkElements: [
+      //     {
+      //       linkHeader: "Book's for Men",
+      //       subLink: [
+      //         {
+      //           subLinkHeader: "Top Wear",
+      //           links: [
+      //             {
+      //               name: "T-shirt",
+      //               path: "/t-shirt",
+      //             },
+      //             {
+      //               name: "Casual Shirt",
+      //               path: "/casual-shirt",
+      //             },
+      //             {
+      //               name: "Formal Shirt",
+      //               path: "/formal-shirt",
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           subLinkHeader: "Bottom Wear",
+      //           links: [
+      //             {
+      //               name: "Full Pant",
+      //               path: "/full-pant",
+      //             },
+      //             {
+      //               name: "Short Pant",
+      //               path: "/short-pant",
+      //             },
+      //             {
+      //               name: "Under Wear",
+      //               path: "/under-wear",
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           subLinkHeader: "Inner Wear",
+      //           links: [
+      //             {
+      //               name: "Short T-Shirt",
+      //               path: "/short-t-shirt",
+      //             },
+      //             {
+      //               name: "Short Pant",
+      //               path: "/short-pant",
+      //             },
+      //             {
+      //               name: "Under Wear",
+      //               path: "/under-wear",
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       linkHeader: "Fashion for Women",
+      //       subLink: [
+      //         {
+      //           subLinkHeader: "Top Wear",
+      //           links: [
+      //             {
+      //               name: "T-shirt",
+      //               path: "/t-shirt",
+      //             },
+      //             {
+      //               name: "Casual Shirt",
+      //               path: "/casual-shirt",
+      //             },
+      //             {
+      //               name: "Formal Shirt",
+      //               path: "/formal-shirt",
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           subLinkHeader: "Bottom Wear",
+      //           links: [
+      //             {
+      //               name: "Full Pant",
+      //               path: "/full-pant",
+      //             },
+      //             {
+      //               name: "Short Pant",
+      //               path: "/short-pant",
+      //             },
+      //             {
+      //               name: "Under Wear",
+      //               path: "/under-wear",
+      //             },
+      //           ],
+      //         },
+      //         {
+      //           subLinkHeader: "Inner Wear",
+      //           links: [
+      //             {
+      //               name: "Short T-Shirt",
+      //               path: "/short-t-shirt",
+      //             },
+      //             {
+      //               name: "Short Pant",
+      //               path: "/short-pant",
+      //             },
+      //             {
+      //               name: "Under Wear",
+      //               path: "/under-wear",
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
     ],
   },
 ];

@@ -24,7 +24,7 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
         AllLinksData.map((link) => (
           <div key={link.id}>
             <div
-              className="md:flex  justify-center items-center  hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-1 cursor-pointer font-semibold hidden"
+              className="md:flex  justify-center items-center  duration-300  text-[#000]  px-1 cursor-pointer font-semibold hidden"
               onClick={handleClick}
             >
               {link.path ? (
@@ -39,9 +39,9 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
                   {link.linkName}
                 </NavLink>
               ) : (
-                <div className="md:py-1 z-40 hover:bg-[#DF4D05] duration-300 rounded-full  text-[#000] hover:text-[#fff] px-1  group ">
+                <div className="md:py-1 z-40  duration-300 rounded-full  text-[#000] hover:text-[#468CF7]px-1  group ">
                   <div className="">
-                    <li className=" rounded-full  hover:text-[#fff] px-3 py-1 group-hover:text-cardHoverColor">
+                    <li className=" rounded-full  hover:text-[#468CF7] px-3 py-1 ">
                       {link.linkName}
                     </li>
                     <div className="absolute  transition-all text-black hidden md:group-hover:block hover:block bg-gray-50 top-14 left-40 rounded ">

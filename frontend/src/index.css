@@ -17,6 +17,9 @@ body {
 .xsm-full {
         width: 100%;
 }
+.carousel-image {
+        max-height: 196.28px;
+}
 }
 
 @media (min-width:400px) {
