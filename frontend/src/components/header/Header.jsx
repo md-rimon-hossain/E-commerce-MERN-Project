@@ -1,22 +1,22 @@
 /* eslint-disable no-unused-vars */
 
 import React from 'react'
-import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+
+import { Link, NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 import {
   BsCart,
   BsThreeDots,
 } from "react-icons/bs";
-
 import { IoSearchSharp } from "react-icons/io5";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
-// import { logo } from "../../index";
+
 import NavLinks from "./NavLinks";
 import Container from "../Container";
-import { useSelector } from 'react-redux';
 
 import LogoutBtn from "../LogoutBtn"
 import UserProfileBtn from "../UserProfileBtn";
@@ -25,7 +25,8 @@ import { LogIn } from "lucide-react";
 
 const Header = () => {
   const { authStatus, loginUserData } = useSelector((state) => state.auth);
-  console.log(authStatus);
+  const { cartItems} = useSelector((state) => state.cart);
+  
 
   const [showNavbar, setShowNavbar] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
@@ -156,23 +157,26 @@ const Header = () => {
                   )}
 
                   <Link to={"/cart"}>
-                    <div className="flex justify-center  duration-200 rounded-full  text-[#000] hover:text-[#468CF7] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
-                      <BsCart className="lg:text-xl text-[17px] " />
-                      <button className="text-md py-2 font-semibold text-[18px]">
+                    <div className="relative flex justify-center   duration-200 rounded-full  text-[#000] hover:text-[#468CF7] px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
+                      <button className="text-md py-2 font-semibold  text-[18px]">
                         Cart
                       </button>
+                      <BsCart className="lg:text-xl text-[17px] " />
+                      <span className="absolute hover:translate-[360deg] top-[-5px] right-0 w-6 h-6 flex justify-center items-center z-10 rounded-full bg-red-400 text-white">
+                        {cartItems}
+                      </span>
                     </div>
                   </Link>
 
                   {authStatus && loginUserData ? (
-                    <Link
+                    <div
                       onClick={() =>
                         setShowUserProfileSidebar(!showUserProfileSidebar)
                       }
-                      className="w-[100px] font-bold"
+                      className="w-[100px] font-bold cursor-pointer"
                     >
                       <UserProfileBtn className={"text-black "} />
-                    </Link>
+                    </div>
                   ) : null}
 
                   {showUserProfileSidebar && (

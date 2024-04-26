@@ -5,9 +5,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export default function IsAdmin({ children, isAdmin = true, }) {
+
+  const { loginUserData } = useSelector((state) => state.auth);
+  
   const navigate = useNavigate();
   const [loader, setLoader] = useState(true);
-  const { loginUserData } = useSelector((state) => state.auth);
   useEffect(() => {
     //TODO: make it more easy to understand
 

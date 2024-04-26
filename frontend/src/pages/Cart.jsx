@@ -1,237 +1,210 @@
-import PageTitle from "../components/PageTitle";
 
-function Cart() {
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import { Trash } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+
+import PageTitle from "../components/PageTitle";
+import { removeToCart } from "../store/cartSlice";
+
+import { assets } from "../assets";
+
+// const products = [
+//   {
+//     id: 1,
+//     name: "Nike Air Force 1 07 LV8",
+//     href: "#",
+//     price: "₹47,199",
+//     originalPrice: "₹48,900",
+//     discount: "5% Off",
+//     color: "Orange",
+//     size: "8 UK",
+//     imageSrc:
+//       "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/54a510de-a406-41b2-8d62-7f8c587c9a7e/air-force-1-07-lv8-shoes-9KwrSk.png",
+//   },
+
+// ];
+
+export default function Cart() {
+  const { cartProducts, cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch()
+  
   return (
     <>
       <PageTitle title={"Cart"} />
-      <div className="mx-auto flex max-w-3xl flex-col space-y-4 p-6 px-2 sm:p-10 sm:px-2">
-        <h2 className="text-3xl font-bold">Your cart</h2>
-        <p className="mt-3 text-sm font-medium text-gray-700">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum eius
-          repellat ipsam, sit praesentium incidunt.
-        </p>
-        <ul className="flex flex-col divide-y divide-gray-200">
-          <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
-            <div className="flex w-full space-x-2 sm:space-x-4">
-              <img
-                className="h-20 w-20 flex-shrink-0 rounded object-contain outline-none dark:border-transparent sm:h-32 sm:w-32"
-                src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/54a510de-a406-41b2-8d62-7f8c587c9a7e/air-force-1-07-lv8-shoes-9KwrSk.png"
-                alt="Nike Air Force 1 07 LV8"
-              />
-              <div className="flex w-full flex-col justify-between pb-4">
-                <div className="flex w-full justify-between space-x-2 pb-2">
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-semibold leading-snug sm:pr-8">
-                      Nike Air Force 1 07 LV8
-                    </h3>
-                    <p className="text-sm">Orange</p>
+      <div className="mx-auto max-w-7xl  lg:px-0">
+        <div className="mx-auto max-w-2xl py-8 md:px-40 xl:px-10 lg:max-w-7xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Shopping Cart
+          </h1>
+          <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+            <section
+              aria-labelledby="cart-heading"
+              className="rounded-lg bg-white lg:col-span-8"
+            >
+              <h2 id="cart-heading" className="sr-only">
+                Items in your shopping cart
+              </h2>
+              <ul role="list" className="divide-y divide-gray-200">
+                {cartProducts.length !== 0 ? (
+                  cartProducts.map((product) => (
+                    <div key={product._id} className="border mb-1 shadow-sm">
+                      <li className="flex px-2 py-6 sm:py-6 ">
+                        <div className="flex-shrink-0">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="sm:h-38 sm:w-38 h-24 w-24 md:h-32 md:w-32 rounded-md object-contain object-center"
+                          />
+                        </div>
+
+                        <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+                          <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+                            <div>
+                              <div className="flex justify-between">
+                                <h3 className="text-sm">
+                                  <a
+                                    href={product.href}
+                                    className="font-semibold text-black text-[18px]"
+                                  >
+                                    {product.name}
+                                  </a>
+                                </h3>
+                              </div>
+                              <div className="mt-1 flex text-sm">
+                                <p className="text-sm text-gray-500">
+                                  {product.color}
+                                </p>
+                                {product.size ? (
+                                  <p className="ml-4 border-l border-gray-200 pl-4 text-sm text-gray-500">
+                                    {product.size}
+                                  </p>
+                                ) : null}
+                              </div>
+                              <div className="mt-1 flex items-end">
+                                <p className="text-xs font-medium text-gray-500 line-through">
+                                  {product.originalPrice}
+                                </p>
+                                <p className="text-sm font-medium text-gray-900">
+                                  <span className="text-3xl">৳</span>
+                                  &nbsp;{product.price}
+                                </p>
+                                &nbsp;&nbsp;
+                                <p className="text-sm font-medium text-green-500">
+                                  {product.discount}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <div className="mb-2 flex">
+                        <div className="min-w-32 flex justify-center items-center">
+                          <button
+                            type="button"
+                            className="h-8 w-8 flex items-center justify-center  text-[30px] font-semibold"
+                          >
+                            -
+                          </button>
+                          <input
+                            type="text"
+                            readOnly
+                            className="h-8 w-9 text-[23px] font-semibold rounded-md border bg-white text-center"
+                            defaultValue={1}
+                          />
+                          <button
+                            type="button"
+                            className="flex h-8 w-8 text-[30px] font-semibold items-center justify-center"
+                          >
+                            +
+                          </button>
+                        </div>
+                        <div className="ml-6 flex text-sm">
+                          <button
+                            type="button"
+                            onClick={() => dispatch(removeToCart(product.slug))}
+                            className="flex items-center space-x-1 px-2 py-1 pl-0"
+                          >
+                            <Trash size={12} className="text-red-500" />
+                            <span className="text-xs font-medium text-red-500">
+                              Remove
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <>
+                    <h1 className="text-slate-800 mb-2 text-xl text-center font-bold">
+                      Your Cart is Empty
+                    </h1>
+                    <img src={assets.emptyCartImage} alt="" />
+                  </>
+                )}
+              </ul>
+            </section>
+            {/* Order summary */}
+            <section
+              aria-labelledby="summary-heading"
+              className="mt-16 rounded-md bg-white lg:col-span-4 lg:mt-0 lg:p-0"
+            >
+              <h2
+                id="summary-heading"
+                className=" border-b border-gray-200 px-4 py-3 text-xl font-medium text-gray-900 sm:p-4"
+              >
+                Price Details
+              </h2>
+              <div>
+                <dl className=" space-y-1 px-2 py-4">
+                  <div className="flex items-center justify-between">
+                    <dt className="text-base text-gray-800">
+                      Price ({cartItems} item)
+                    </dt>
+                    <dd className="text-base font-medium text-gray-900">
+                      <span className="text-3xl">৳</span>
+                      &nbsp;
+                      {cartProducts.reduce(
+                        (accumulator, product) => accumulator + product.price,
+                        0
+                      )}
+                    </dd>
                   </div>
-                  <div className="text-right">
-                    <p className="text-lg font-semibold">₹47,199</p>
+                  <div className="flex items-center justify-between pt-4">
+                    <dt className="flex items-center text-base text-gray-800">
+                      <span>Discount</span>
+                    </dt>
+                    <dd className="text-base font-medium text-green-700">0</dd>
                   </div>
-                </div>
-                <div className="flex divide-x text-sm">
-                  <button
-                    type="button"
-                    className="flex items-center space-x-2 px-2 py-1 pl-0"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-trash"
-                    >
-                      <path d="M3 6h18"></path>
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                    </svg>
-                    <span>Remove</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="flex items-center space-x-2 px-2 py-1"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-heart"
-                    >
-                      <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path>
-                    </svg>
-                    <span>Add to favorites</span>
-                  </button>
-                </div>
+                  <div className="flex items-center justify-between py-4">
+                    <dt className="flex text-base text-gray-800">
+                      <span>Delivery Charges</span>
+                    </dt>
+                    <dd className="text-base font-medium text-green-700">
+                      Free
+                    </dd>
+                  </div>
+                  <div className="flex items-center justify-between border-y border-dashed py-4 ">
+                    <dt className="text-base font-medium text-gray-900">
+                      Total Amount
+                    </dt>
+                    <dd className="text-base font-medium text-gray-900">
+                      <span className="text-3xl">৳</span>&nbsp;
+                      {cartProducts.reduce(
+                        (accumulator, product) => accumulator + product.price,
+                        0
+                      )}
+                    </dd>
+                  </div>
+                </dl>
+                {/* <div className="px-2 pb-4 font-medium text-green-700">
+                  You will save ₹ 3,431 on this order
+                </div> */}
               </div>
-            </div>
-          </li>
-          <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
-            <div className="flex w-full space-x-2 sm:space-x-4">
-              <img
-                className="h-20 w-20 flex-shrink-0 rounded object-contain outline-none dark:border-transparent sm:h-32 sm:w-32"
-                src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e48d6035-bd8a-4747-9fa1-04ea596bb074/blazer-low-77-se-shoes-0w2HHV.png"
-                alt="Nike Blazer Low 77 SE"
-              />
-              <div className="flex w-full flex-col justify-between pb-4">
-                <div className="flex w-full justify-between space-x-2 pb-2">
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-semibold leading-snug sm:pr-8">
-                      Nike Blazer Low 77 SE
-                    </h3>
-                    <p className="text-sm">White</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-lg font-semibold">₹1,549</p>
-                  </div>
-                </div>
-                <div className="flex divide-x text-sm">
-                  <button
-                    type="button"
-                    className="flex items-center space-x-2 px-2 py-1 pl-0"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-trash"
-                    >
-                      <path d="M3 6h18"></path>
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                    </svg>
-                    <span>Remove</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="flex items-center space-x-2 px-2 py-1"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-heart"
-                    >
-                      <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path>
-                    </svg>
-                    <span>Add to favorites</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
-            <div className="flex w-full space-x-2 sm:space-x-4">
-              <img
-                className="h-20 w-20 flex-shrink-0 rounded object-contain outline-none dark:border-transparent sm:h-32 sm:w-32"
-                src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fd17b420-b388-4c8a-aaaa-e0a98ddf175f/dunk-high-retro-shoe-DdRmMZ.png"
-                alt="Nike Air Max 90"
-              />
-              <div className="flex w-full flex-col justify-between pb-4">
-                <div className="flex w-full justify-between space-x-2 pb-2">
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-semibold leading-snug sm:pr-8">
-                      Nike Air Max 90
-                    </h3>
-                    <p className="text-sm">Black</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-lg font-semibold">₹2219 </p>
-                  </div>
-                </div>
-                <div className="flex divide-x text-sm">
-                  <button
-                    type="button"
-                    className="flex items-center space-x-2 px-2 py-1 pl-0"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-trash"
-                    >
-                      <path d="M3 6h18"></path>
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                    </svg>
-                    <span>Remove</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="flex items-center space-x-2 px-2 py-1"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-heart"
-                    >
-                      <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path>
-                    </svg>
-                    <span>Add to favorites</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div className="space-y-1 text-right">
-          <p>
-            Total amount:<span className="font-semibold"> ₹48,967</span>
-          </p>
-        </div>
-        <div className="flex justify-end space-x-4">
-          <button
-            type="button"
-            className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            Back to shop
-          </button>
-          <button
-            type="button"
-            className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            Checkout
-          </button>
+            </section>
+          </form>
         </div>
       </div>
     </>
   );
 }
-
-export default Cart;

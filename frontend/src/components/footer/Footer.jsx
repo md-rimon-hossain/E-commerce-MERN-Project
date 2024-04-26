@@ -1,4 +1,6 @@
-// import React from 'react'
+/* eslint-disable no-unused-vars */
+
+import React from 'react'
 import { IoIosSend } from "react-icons/io";
 
 // import { appleStorePng, playStorePng, qrCodePng } from "../../index";

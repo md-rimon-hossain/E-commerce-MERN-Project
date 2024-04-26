@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import React from "react";
+
+import { LogOut } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { logout } from "../store/authSlice";
-import { useDispatch } from "react-redux";
 import { apiService } from "../api/apiService";
-import { useNavigate } from "react-router-dom";
-import { LogOut } from "lucide-react";
 
 function LogoutBtn({ className = "" }) {
   const dispatch = useDispatch();

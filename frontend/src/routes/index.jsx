@@ -7,7 +7,6 @@ import {
   ForgetPassword,
   Home,
   Login,
-  Product,
   Register,
   UserProfile,
 } from "../pages/index.js";
@@ -72,11 +71,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/product",
-        element: <Product />,
-      },
-      {
-        path: "/products",
+        path: "/product/:slug",
         element: <ProductOverview/>
       }
     ],
