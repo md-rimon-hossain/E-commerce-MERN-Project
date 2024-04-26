@@ -1,11 +1,13 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
 import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { CircleUser, X } from "lucide-react";
 
-import { useSelector } from "react-redux";
 
 import userDefaultImage from "../../assets/user_default_image.jpg";
-import { Link } from "react-router-dom";
 import LogoutBtn from "../LogoutBtn";
 
 export function UserProfileSidebar({

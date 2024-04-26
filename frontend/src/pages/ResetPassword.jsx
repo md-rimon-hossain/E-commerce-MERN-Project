@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import PageTitle from "../components/PageTitle";
-import { apiService } from "../api/apiService";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { CheckCircle, Info, X } from "lucide-react";
+
+import PageTitle from "../components/PageTitle";
+import { apiService } from "../api/apiService";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;
 

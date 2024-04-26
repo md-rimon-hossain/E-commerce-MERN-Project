@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useCallback, useEffect, useState } from "react";
 
 import { assets } from "../../assets";
@@ -32,17 +34,6 @@ function Carousel() {
  return (
    <div className=" w-full mt-5 mb-5">
      <div className=" relative w-full">
-       {/* {assets.carouselImages.map((image, index) => (
-         <img
-           key={index}
-           src={image}
-           alt={`carousel-item-${index}`}
-           className={ `w-full transition-opacity duration-400 ${
-             index === currentIndex ? "relative opacity-100" : "absolute opacity-0"
-           }`}
-         />
-       ))} */}
-
        <img
          src={assets.carouselImages[currentIndex]}
          alt={`carousel-item-${currentIndex}`}

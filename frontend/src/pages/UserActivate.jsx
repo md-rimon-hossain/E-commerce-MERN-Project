@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+
 import PageTitle from "../components/PageTitle";
 import Error from "./Error";
-import { useEffect, useState } from "react";
 import { apiService } from "../api/apiService";
 
 function UserActivate() {

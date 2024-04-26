@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 
-import  {  useEffect, useState } from "react";
-
+import React, {  useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import "./App.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Container from "./components/Container";
-import { useDispatch } from "react-redux";
 import { login, logout } from "./store/authSlice";
 import { apiService } from "./api/apiService";
+import CartAddedNotification from "./components/CartNotification/CartAddedNotification";
 
 function App() {
 
@@ -19,7 +21,6 @@ function App() {
   ] = useState(true);
   const dispatch = useDispatch();
 
-  console.log("rimiion")
 
   useEffect(() => {
     (async () => {
@@ -58,6 +59,7 @@ function App() {
           <Header />
           <div className="min-h-[90vh]">
             <Container>
+              <CartAddedNotification/>
               <Outlet />
             </Container>
           </div>
