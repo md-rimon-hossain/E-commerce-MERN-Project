@@ -21,7 +21,7 @@ const CartAddedNotification = () => {
   }, [showNotification, dispatch]);
 
   return (
-    <div className={`notification ${showNotification ? "show" : "hide"}`}>
+    <div className={`notification z-50 ${showNotification ? "show" : "hide"}`}>
       Product added to cart!
     </div>
   );

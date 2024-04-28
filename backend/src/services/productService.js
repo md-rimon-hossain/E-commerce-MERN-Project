@@ -8,7 +8,7 @@ const { publicIdWithoutExtension } = require("../helper/cludinaryHelper");
 
 // Product create service
 const handleCreateProduct = async (req) => {
-  const { name, description, price, sold, quantity, shipping, category } =
+  const { name, description, price,originalPrice,discount,color,size, sold, quantity, shipping, category } =
     req.body;
 
   let image = req.file?.path;
@@ -40,6 +40,10 @@ const handleCreateProduct = async (req) => {
     slug: slugify(name),
     description: description,
     price: price,
+    originalPrice: originalPrice,
+    discount: discount,
+    color: color,
+    size:size,
     sold: sold,
     quantity: quantity,
     shipping: shipping,
@@ -51,14 +55,11 @@ const handleCreateProduct = async (req) => {
 };
 
 // all products get service
-const handleGetAllProducts = async (search,page, limit) => {
-
+const handleGetAllProducts = async (search, page, limit) => {
   const searchRegExp = new RegExp(".*" + search + ".*", "i");
-    const filter = {
-      $or: [
-        { name: { $regex: searchRegExp } },
-      ],
-    };
+  const filter = {
+    $or: [{ name: { $regex: searchRegExp } }],
+  };
 
   const products = await Product.find(filter)
     .populate("category")

@@ -38,7 +38,7 @@ function Carousel() {
          src={assets.carouselImages[currentIndex]}
          alt={`carousel-item-${currentIndex}`}
          style={{ animation: "fadeIn 0.5s ease-in-out forwards" }}
-         className={` w-full carousel-image sm:max-h-[577.78px] man-h-[577.78px] object-cover rounded-md md:rounded-ss-3xl md:rounded-ee-3xl  transition-opacity duration-500 
+         className={` w-full carousel-image sm:max-h-[577.78px] man-h-[577.78px] object-cover rounded-badge md:rounded-ss-badge md:rounded-ee-badge  transition-opacity duration-500 
            }`}
        />
 

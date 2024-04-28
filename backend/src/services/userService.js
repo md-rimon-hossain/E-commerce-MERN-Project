@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
+
 const User = require("../models/userModel");
 const cloudinary = require("../config/cloudinary");
 const { deleteImage } = require("../helper/deleteImage");
@@ -10,7 +11,7 @@ const { JwtResetPasswordKey, clientURL } = require("../secret");
 const { createJSONWebToken } = require("../helper/jsonwebtoken");
 const { sendEmailWithNodeMailer } = require("../helper/email");
 const { publicIdWithoutExtension } = require("../helper/cludinaryHelper");
-const { log } = require("winston");
+
 // Find All Users for Admin
 const handleFindUsers = async (search, limit, page) => {
   try {

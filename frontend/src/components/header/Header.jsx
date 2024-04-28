@@ -25,7 +25,7 @@ import { LogIn } from "lucide-react";
 
 const Header = () => {
   const { authStatus, loginUserData } = useSelector((state) => state.auth);
-  const { cartItems} = useSelector((state) => state.cart);
+  const { cartItemsCount } = useSelector((state) => state.cart);
   
 
   const [showNavbar, setShowNavbar] = useState(false);
@@ -125,7 +125,7 @@ const Header = () => {
                   )}
                 </div>
 
-                <div className="md:flex justify-between items-center gap-2  sm:text-[13px] hidden lg:text-[17px]">
+                <div className="relative md:flex justify-between items-center gap-2  sm:text-[13px] hidden lg:text-[17px]">
                   {!authStatus && (
                     <Link to={"/login"}>
                       <div className="flex justify-center font-semibold   duration-200   text-[#000] hover:text-[#468CF7]  px-3 items-center gap-1 cursor-pointer hover:text-cardHoverColor">
@@ -163,7 +163,7 @@ const Header = () => {
                       </button>
                       <BsCart className="lg:text-xl text-[17px] " />
                       <span className="absolute hover:translate-[360deg] top-[-5px] right-0 w-6 h-6 flex justify-center items-center z-10 rounded-full bg-red-400 text-white">
-                        {cartItems}
+                        {cartItemsCount}
                       </span>
                     </div>
                   </Link>

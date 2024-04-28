@@ -52,7 +52,9 @@ export const ProductOverview = () => {
                 </span>
               </span>
             </div>
-            <p className="leading-relaxed">{overviewProduct[0]?.description}</p>
+            <p className="leading-relaxed text-slate-900 text-justify">
+              {overviewProduct[0]?.description}
+            </p>
             <div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
               <div className="flex items-center">
                 <span className="mr-3 text-sm font-semibold">Color</span>
