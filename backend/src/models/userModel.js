@@ -10,7 +10,7 @@ const userSchema = new Schema(
       required: [true, "User name is required"],
       trim: true,
       minlength: [3, "The length of user name can be minimum 3 characters"],
-      mexlength: [31, "The length of user name can be maximum 31 characters"],
+      maxlength: [31, "The length of user name can be maximum 31 characters"],
     },
     email: {
       type: String,
@@ -57,6 +57,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = model("Users", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

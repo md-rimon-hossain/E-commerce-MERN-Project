@@ -1,8 +1,7 @@
 const categoryRouter = require("express").Router();
 
-const { runValidation } = require("../validators");
-const uploadUserImage = require("../middlewares/uploadFile");
-const { isLoggedIn, isLoggedOut, isAdmin } = require("../middlewares/auth");
+const { runValidation } = require("../validators")
+const { isLoggedIn, isAdmin } = require("../middlewares/auth");
 
 // all routes here
 const {
@@ -45,4 +44,6 @@ categoryRouter.delete(
   isAdmin,
   deleteCategory
 );
+
+
 module.exports = categoryRouter;

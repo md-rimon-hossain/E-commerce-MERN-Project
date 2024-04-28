@@ -56,7 +56,6 @@ const handleDeleteCategory = async (slug) => {
 // create categories
 const handleCreateCategories = async (name) => {
   try {
-    console.log(name);
     const newCategory = await Category.create({
       name: name,
       slug: slugify(name),

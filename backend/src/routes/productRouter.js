@@ -25,10 +25,13 @@ productRouter.post(
 );
 // get all products
 productRouter.get("/", getAllProducts);
+
 // get single product
 productRouter.get("/:slug", getSingleProduct);
+
 // delete single product
 productRouter.delete("/:slug", isLoggedIn, isAdmin, deleteSingleProduct);
+
 // delete single product
 productRouter.put(
   "/:slug",

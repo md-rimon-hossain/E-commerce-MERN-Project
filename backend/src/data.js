@@ -19,50 +19,57 @@ const data = {
 
   products: [
     {
-      name:"iphone 12",
-      slug:"iphone-12",
-      description: "The iPhone 12 is a compact yet powerful smartphone developed by Apple. It features a sleek design with flat edges reminiscent of the iPhone 5 and iPhone SE. The device boasts a 6.1-inch Super Retina XDR display, offering vibrant colors and deep blacks.",
-      price:1200,
-      image: "public/images/products/default.png",
-      sold:20,
-      quantity:40,
-      shipping:0,
-      category: "65d433a094f294214cba6692"
+      name: "iphone 12",
+      slug: "iphone-12",
+      description:
+        "The iPhone 12 is a compact yet powerful smartphone developed by Apple. It features a sleek design with flat edges reminiscent of the iPhone 5 and iPhone SE. The device boasts a 6.1-inch Super Retina XDR display, offering vibrant colors and deep blacks.",
+      price: 1200,
+      originalPrice: 4000,
+      discount: "10% off",
+      color: "red",
+      size: "5 UK",
+      image:
+        "https://res.cloudinary.com/drps4paam/image/upload/v1714299382/ecommerceMern/products/fikk2h2rcyhy3mmy2zoj.jpg",
+      sold: 20,
+      quantity: 40,
+      shipping: 0,
+      category: "662e3fff2997a794cf7c5c1e",
     },
     {
-      name:"iphone 13",
-      slug:"iphone-13",
-      description: "The iPhone 13, released in September 2021, features a sleek design, improved Super Retina XDR displays, and Apple's powerful A15 Bionic chip. It comes in four sizes and offers better battery life, enhanced camera capabilities, and 5G connectivity.",
-      price:1300,
-      image: "public/images/products/default.png",
-      sold:25,
-      quantity:50,
-      shipping:0,
-      category: "65d433a094f294214cba6692"
+      name: "samsung a34",
+      slug: "samsung-a34",
+      description:
+        "Galaxy A34 5G is rated as IP67. Based on lab test conditions for submersion in up to 1 metre of freshwater for up to 30 minutes. Not advised for beach or pool use. Water and dust resistance of device is not permanent and may diminish over time.**Colour availability may vary depending on country, region, or carrier. ***5G network availability and actual speed may vary depending on country, network provider and user environment.",
+      price: 1000,
+      originalPrice: 4000,
+      discount: "10% off",
+      color: "red",
+      size: "5 UK",
+      image:
+        "https://res.cloudinary.com/drps4paam/image/upload/v1714113068/ecommerceMern/products/q0ziy6yqs1ppqmbhmkkx.jpg",
+      sold: 30,
+      quantity: 40,
+      shipping: 0,
+      category: "662e3fff2997a794cf7c5c1e",
     },
     {
-      name:"samsung a34",
-      slug:"samsung-a34",
-      description: "Galaxy A34 5G is rated as IP67. Based on lab test conditions for submersion in up to 1 metre of freshwater for up to 30 minutes. Not advised for beach or pool use. Water and dust resistance of device is not permanent and may diminish over time.**Colour availability may vary depending on country, region, or carrier. ***5G network availability and actual speed may vary depending on country, network provider and user environment.",
-      price:1000,
-      image: "public/images/products/default.png",
-      sold:30,
-      quantity:40,
-      shipping:0,
-      category: "65d433b094f294214cba6695"
+      name: "Calaxy z flip4",
+      slug: "galaxy-z-flip4",
+      description:
+        "The Galaxy Z Flip4 is a cutting-edge foldable smartphone by Samsung, boasting a sleek clamshell design. With its foldable 6.7-inch AMOLED display, it offers a compact form factor when closed. Powered by advanced hardware, likely featuring the latest Snapdragon processor, it ensures smooth performance. Equipped with high-quality cameras and supporting wireless charging, the Galaxy Z Flip4 combines innovation with practicality, redefining the smartphone experience.",
+      price: 9999,
+      originalPrice: 4000,
+      discount: "10% off",
+      color: "red",
+      size: "5 UK",
+      image:
+        "https://res.cloudinary.com/drps4paam/image/upload/v1714144325/ecommerceMern/products/o7t8dzdvfddyiotxvihv.jpg",
+      sold: 15,
+      quantity: 40,
+      shipping: 0,
+      category: "662e3fff2997a794cf7c5c1e",
     },
-    {
-      name:"Calaxy z flip4",
-      slug:"galaxy-z-flip4",
-      description: "The Galaxy Z Flip4 is a cutting-edge foldable smartphone by Samsung, boasting a sleek clamshell design. With its foldable 6.7-inch AMOLED display, it offers a compact form factor when closed. Powered by advanced hardware, likely featuring the latest Snapdragon processor, it ensures smooth performance. Equipped with high-quality cameras and supporting wireless charging, the Galaxy Z Flip4 combines innovation with practicality, redefining the smartphone experience.",
-      price:9999,
-      image: "public/images/products/default.png",
-      sold:15,
-      quantity:40,
-      shipping:0,
-      category: "65d433b094f294214cba6695"
-    },
-  ]
+  ],
 };
 
 module.exports = data;

@@ -39,6 +39,29 @@ const productSchema = new Schema(
           `${props} is not a valid price. price must be greater then 0`,
       },
     },
+    originalPrice: {
+      type: Number,
+      trim: true,
+      required: [true, "Product price is required"],
+      validate: {
+        validator: (v) => v > 0,
+        message: (props) =>
+          `${props} is not a valid price. price must be greater then 0`,
+      },
+    },
+    discount: {
+      type: String,
+      required: false,
+    },
+    color: {
+      type: String,
+      required: [true, "Product slug is required"],
+    },
+    size: {
+      type: String,
+      required: [true, "Product slug is required"],
+      uppercase: true,
+    },
     quantity: {
       type: Number,
       trim: true,
@@ -54,26 +77,26 @@ const productSchema = new Schema(
       trim: true,
       required: [true, "Product sold is required"],
       default: 0,
-    //   validate: {
-    //     validator: (v) => v > 0,
-    //     message: (props) =>
-    //       `${props} is not a valid sold quantity. sold must be greater then 0`,
-    //   },
+      //   validate: {
+      //     validator: (v) => v > 0,
+      //     message: (props) =>
+      //       `${props} is not a valid sold quantity. sold must be greater then 0`,
+      //   },
     },
     shipping: {
       type: Number,
       default: 0, // shipping free then 0 , or something amount
     },
     image: {
-        type: String,
-        // contentType: String,
-        required: [true, "Product image is required"],
-        default: defaultProductImagePath
+      type: String,
+      // contentType: String,
+      required: [true, "Product image is required"],
+      default: defaultProductImagePath,
     },
     category: {
-        type: Schema.Types.ObjectId,
-        ref:"Category",
-        required: true
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
     },
   },
   { timestamps: true }

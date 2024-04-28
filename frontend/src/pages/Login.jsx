@@ -7,7 +7,7 @@ import { CheckCircle, Info, X } from "lucide-react";
 import PageTitle from "../components/PageTitle";
 import { login } from "../store/authSlice";
 import { apiService } from "../api/apiService";
-
+import { fetchCartData } from "../store/cartSlice";
 
 const EMAIL_REGEX = /^[a-zA-Z-0-9._-]+@[a-zA-Z0–9.-]+\.[a-zA-Z]{2,4}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;
@@ -20,10 +20,9 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  
   // from validation handle error for client
   const userEmailRef = useRef(true);
-   const [allErrAndSuccessMsg, setAllErrAndSuccessMsg] = useState("");
+  const [allErrAndSuccessMsg, setAllErrAndSuccessMsg] = useState("");
 
   const [validEmail, setValidEmail] = useState(false);
 
@@ -43,7 +42,6 @@ function Login() {
     const result = EMAIL_REGEX.test(email);
     setValidEmail(result);
   }, [email]);
-
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -71,24 +69,20 @@ function Login() {
       setIsLoading(false);
       setAllErrAndSuccessMsg(response.data.message);
 
-      console.log(response.data.payload);
-     
       if (!response.status == 200) {
         throw new Error("Login failed");
       }
 
       dispatch(login(response.data.payload));
+      dispatch(fetchCartData(response.data.payload._id));
       navigate("/");
-
     } catch (error) {
       setIsLoading(false);
 
       if (!error?.response) {
         setIsLoading(false);
         setAllErrAndSuccessMsg("NO Server Response");
-      } else if (
-        error.response?.status == 401
-      ) {
+      } else if (error.response?.status == 401) {
         setAllErrAndSuccessMsg(error.response.data.message);
         setIsLoading(false);
         setTimeout(() => {
@@ -96,7 +90,7 @@ function Login() {
         }, 5000);
       } else {
         setAllErrAndSuccessMsg(error.response.data.message);
-        console.log("log in error", error)
+        console.log("log in error", error);
       }
     }
   };
@@ -219,10 +213,10 @@ function Login() {
                   className="block w-full  bg-white outline-none rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 <div
-                  className={`duration-500 ${
+                  className={`duration-1000 ${
                     passwordFocus && password && !validPassword
-                      ? "block"
-                      : "hidden"
+                      ? "block translate-x-0 "
+                      : "hidden translate-x-0"
                   }`}
                 >
                   <div className="rounded-md border-l-4 mt-1 border-black bg-gray-300 py-1 px-2">

@@ -1,10 +1,10 @@
 // import React from 'react'
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FiMinus } from "react-icons/fi";
 import { LuPlusCircle } from "react-icons/lu";
 
 import AllLinksData from "./AllLinksData";
-import { useState } from "react";
 import AllGroupLinks from "./AllGroupLinks";
 
 // eslint-disable-next-line react/prop-types
@@ -40,11 +40,11 @@ const NavLinks = ({ showNavbar, setShowNavbar }) => {
                 </NavLink>
               ) : (
                 <div className="md:py-1 z-40  duration-300 rounded-full  text-[#000] hover:text-[#468CF7]px-1  group ">
-                  <div className="">
+                  <div className="relative">
                     <li className=" rounded-full  hover:text-[#468CF7] px-3 py-1 ">
                       {link.linkName}
                     </li>
-                    <div className="absolute  transition-all text-black hidden md:group-hover:block hover:block bg-gray-50 top-14 left-40 rounded ">
+                    <div className="absolute  transition-all text-black hidden md:group-hover:block hover:block bg-gray-50 rounded ">
                       {link.submenu &&
                         link.subLinks.map((subLink) => {
                           return (

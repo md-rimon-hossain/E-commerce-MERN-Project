@@ -17,7 +17,7 @@ export function UserProfileSidebar({
   const { authStatus, loginUserData } = useSelector((state) => state.auth);
 
   return (
-    <aside className="sidebar flex absolute shadow-md rounded-md top-[4.5rem] right-10 z-50  w-64 flex-col overflow-y-auto border-r bg-white px-5 py-4">
+    <aside className="sidebar flex absolute shadow-md rounded-md top-[4rem] right-0 z-50  w-64 flex-col overflow-y-auto border-r bg-white px-5 py-4">
       <div className="w-full">
         <div className="flex justify-between">
           <img
@@ -50,11 +50,11 @@ export function UserProfileSidebar({
               <CircleUser />
               <span className="mx-2 text-sm font-medium">Profile</span>
             </Link>
-            <Link
+            <a href="/login"
               onClick={() => setShowUserProfileSidebar(!showUserProfileSidebar)}
             >
               <LogoutBtn />
-            </Link>
+            </a>
           </div>
         </nav>
       </div>

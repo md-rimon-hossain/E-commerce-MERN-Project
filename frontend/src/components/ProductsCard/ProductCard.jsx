@@ -9,7 +9,7 @@ export function ProductCard({ product }) {
   const {name, description, image, slug} = product
   
   return (
-    <div className="rounded-md border">
+    <div className="rounded-md bg-[#ffffff] border">
       <Link to={`/product/${slug}`} className="">
         <img
           src={image}

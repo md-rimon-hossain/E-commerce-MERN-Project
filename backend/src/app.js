@@ -18,14 +18,15 @@ const seedRouter = require("./routes/seedRouter");
 const authRouter = require("./routes/authRouter");
 const categoryRouter = require("./routes/categoryRouter");
 const productRouter = require("./routes/productRouter");
+const cartRouter = require("./routes/cartRouter");
 
-const limitter = rateLimit({
+const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,
-  limit: 30,
+  limit: 50,
   message: "Too may request for this ip! Please try again Later.",
 });
 
-app.use(limitter);
+app.use(limiter);
 app.use(xssClean());
 app.use(morgan("dev"));
 app.use(cookieParser());
@@ -45,14 +46,14 @@ app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/test", (req, res, next) => {
+app.get("/health", (req, res, next) => {
   try {
     res
       .status(200)
-      .json({ success: true, message: "Hey Likhon Test  page. Server is running" });
+      .json({ success: true, message: "Server is running successfully" });
     // next(createError(404, "Routes Not Found"));
   } catch (error) {
-    res.status(500).send("error is here");
+    res.status(500).send("error is here, Something Broke health route");
   }
 });
 
@@ -62,6 +63,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/products", productRouter);
+app.use("/api/cart", cartRouter);
 
 app.use((req, res, next) => {
   next(createError(404, "Route not Found!"));

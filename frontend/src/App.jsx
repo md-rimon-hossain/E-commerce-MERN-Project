@@ -11,6 +11,7 @@ import Container from "./components/Container";
 import { login, logout } from "./store/authSlice";
 import { apiService } from "./api/apiService";
 import CartAddedNotification from "./components/CartNotification/CartAddedNotification";
+import { fetchCartData } from "./store/cartSlice";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           const response = await apiService.get("/api/auth/protected");
           if (response.data.success) {
             dispatch(login(userData));
+            dispatch(fetchCartData(userData._id))
           }
         }
         setLoading(false);
@@ -55,11 +57,11 @@ function App() {
   return (
     <>
       {!loading ? (
-        <div className="w-full min-h-[90vh] bg-[#ffffff]">
+        <div className="w-full min-h-[90vh] bg-[#E8EDED]">
           <Header />
           <div className="min-h-[90vh]">
             <Container>
-              <CartAddedNotification/>
+              <CartAddedNotification />
               <Outlet />
             </Container>
           </div>
