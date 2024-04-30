@@ -8,7 +8,17 @@ const { publicIdWithoutExtension } = require("../helper/cludinaryHelper");
 
 // Product create service
 const handleCreateProduct = async (req) => {
-  const { name, description, price,originalPrice,discount,color,size, sold, quantity, shipping, category } =
+  const {
+    name,
+    description,
+    price,
+    originalPrice,
+    discount,
+    color, size,
+    sold,
+    quantity,
+    shipping,
+    category } =
     req.body;
 
   let image = req.file?.path;

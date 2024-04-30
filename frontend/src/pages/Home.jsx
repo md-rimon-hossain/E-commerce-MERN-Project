@@ -7,6 +7,7 @@ import Carousel from "../components/Carousel/Carousel";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../store/productsSlice";
+import Pagination from "../components/Pagination/pagination";
 
 
 function Home() {
@@ -37,6 +38,7 @@ function Home() {
               return <ProductCard key={_id} product={product} />;
             })}
         </div>
+        <Pagination/>
       </div>
     </>
   );
