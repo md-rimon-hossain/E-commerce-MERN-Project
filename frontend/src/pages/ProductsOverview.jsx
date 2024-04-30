@@ -57,15 +57,19 @@ export const ProductOverview = () => {
             </p>
             <div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
               <div className="flex items-center">
-                <span className="mr-3 text-sm font-semibold">Color</span>
+                <span className="mr-3 text-sm font-semibold text-gray-800">
+                  Color
+                </span>
                 <button className="h-6 w-6 rounded-full border-2 border-gray-300 focus:outline-none"></button>
                 <button className="ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-gray-700 focus:outline-none"></button>
                 <button className="ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-green-200 focus:outline-none"></button>
               </div>
               <div className="ml-auto flex items-center">
-                <span className="mr-3 text-sm font-semibold">Size</span>
+                <span className="mr-3 text-sm font-semibold text-gray-800">
+                  Size
+                </span>
                 <div className="relative">
-                  <select className="appearance-none rounded border border-gray-300 py-2 pl-3 pr-10 text-sm focus:border-black focus:outline-none focus:ring-2 focus:ring-black">
+                  <select className="appearance-none rounded bg-slate-50 text-gray-800 border border-gray-300 py-2 pl-3 pr-10 text-sm focus:border-black focus:outline-none focus:ring-2 focus:ring-black">
                     <option>8 UK</option>
                     <option>9 UK</option>
                     <option>10 UK</option>

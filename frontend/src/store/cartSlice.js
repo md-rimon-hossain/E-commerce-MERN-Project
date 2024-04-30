@@ -30,6 +30,7 @@ export const addToCartAsync = createAsyncThunk(
     }
   }
 );
+
 export const removeToCartAsync = createAsyncThunk(
   "cart/removeToCartAsync",
   async ({ userId, productId, quantity }) => {
@@ -76,13 +77,11 @@ const initialState = {
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-
   reducers: {
     hideCartNotification: (state) => {
       state.showNotification = false;
     },
   },
-
   extraReducers: (builder) => {
     builder
       .addCase(fetchCartData.pending, (state) => {
