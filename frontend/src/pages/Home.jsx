@@ -9,14 +9,21 @@ import { fetchProductsDataAsync } from "../store/productsSlice";
 import Pagination from "../components/Pagination/pagination";
 
 function Home() {
-  const { allProducts,pagination, loading } = useSelector((state) => state.products);
-
+  const { allProducts, pagination, loading } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
       if (!allProducts) {
-        dispatch(fetchProductsDataAsync());
+        dispatch(
+          fetchProductsDataAsync({
+            search: "",
+            page: 1,
+            limit: 1,
+          })
+        );
       }
     })();
   }, [dispatch, allProducts]);
@@ -63,7 +70,9 @@ function Home() {
             })
           )}
         </div>
-        <Pagination pagination={pagination } />
+        {pagination && pagination?.totalPages !== 1 ? (
+          <Pagination pagination={pagination} />
+        ) : null}
       </div>
     </>
   );

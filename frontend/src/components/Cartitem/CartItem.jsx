@@ -10,6 +10,7 @@ import {
 import { Trash } from "lucide-react";
 
 function CartItem({ product, item }) {
+  
   const { cartProducts, loading } = useSelector((state) => state.cart);
   const { loginUserData } = useSelector((state) => state.auth);
   const [localQuantity, setLocalQuantity] = useState(item.quantity);

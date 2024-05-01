@@ -3,7 +3,7 @@ import { apiService } from "../api/apiService";
 
 export const fetchProductsDataAsync = createAsyncThunk(
   "cart/fetchProductsDataAsync",
-  async (search = "", page = 1, limit = 12) => {
+async ({search, page , limit} ) => {
     try {
       const response = await apiService.get(
         `/api/products?search=${search}&page=${page}&limit=${limit}`
@@ -39,6 +39,7 @@ const productsSlice = createSlice({
       .addCase(fetchProductsDataAsync.fulfilled, (state, action) => {
         const products = action.payload.products;
         const pagination = action.payload.pagination;
+        
         state.loading = false;
         state.allProducts = products;
         state.pagination = pagination;
