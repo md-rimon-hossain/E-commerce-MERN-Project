@@ -16,12 +16,12 @@ import { FaXmark } from "react-icons/fa6";
 
 
 import NavLinks from "./NavLinks";
-import Container from "../Container";
+import { Container, LogoutBtn, UserProfileSidebar, UserProfileBtn } from "../index";
 
-import LogoutBtn from "../LogoutBtn"
-import UserProfileBtn from "../UserProfileBtn";
-import { UserProfileSidebar } from "../UserProfileSidebar/UserProfileSidebar";
-import { LogIn } from "lucide-react";
+
+
+
+
 
 const Header = () => {
   const { authStatus, loginUserData } = useSelector((state) => state.auth);

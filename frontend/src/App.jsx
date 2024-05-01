@@ -1,17 +1,20 @@
-/* eslint-disable no-unused-vars */
-
-import React, {  useEffect, useState } from "react";
+import  {  useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import "./App.css";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import Container from "./components/Container";
-import { login, logout } from "./store/authSlice";
 import { apiService } from "./api/apiService";
-import CartAddedNotification from "./components/CartNotification/CartAddedNotification";
+import { login, logout } from "./store/authSlice";
 import { fetchCartData } from "./store/cartSlice";
+
+import {
+  Header,
+  Footer,
+  Container,
+  CartAddedNotification
+} from "./components";
+
+import "./App.css";
+
 
 function App() {
 

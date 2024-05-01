@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import PageTitle from "../components/PageTitle";
-import Error from "./Error";
-import { apiService } from "../api/apiService";
+import { apiService } from "../../api/apiService";
+
+import { Error } from "../index.js";
+import { PageTitle } from "../../components/index.js";
 
 function UserActivate() {
   const { token } = useParams();
@@ -37,8 +38,7 @@ function UserActivate() {
         }
       }
     })();
-    
-  }, []);
+  }, [navigate, token]);
 
   if (token) {
     return (
@@ -49,7 +49,7 @@ function UserActivate() {
             <h1 className="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">
               {errorMgs == "" ? "Registration successful" : errorMgs}
             </h1>
-            
+
             {errorMgs == "" ? (
               <div className="mt-6 flex items-center space-x-3">
                 <Link to="/login">

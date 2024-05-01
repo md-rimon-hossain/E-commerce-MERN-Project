@@ -8,9 +8,9 @@ import { CircleUser, X } from "lucide-react";
 
 
 import userDefaultImage from "../../assets/user_default_image.jpg";
-import LogoutBtn from "../LogoutBtn";
+import {LogoutBtn} from "../index";
 
-export function UserProfileSidebar({
+export default function UserProfileSidebar({
   showUserProfileSidebar,
   setShowUserProfileSidebar,
 }) {

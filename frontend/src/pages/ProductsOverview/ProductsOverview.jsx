@@ -1,14 +1,15 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+
+import  { useEffect, useState } from "react";
 import { Star, ChevronDown } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { getAllProducts } from "../store/productsSlice";
-import { apiService } from "../api/apiService";
-import AddToCartBtn from "../components/addToCartBtn/AddToCartBtn";
+import { getAllProducts } from "../../store/productsSlice";
+import { apiService } from "../../api/apiService";
+import { AddToCartBtn } from "../../components";
 
-export const ProductOverview = () => {
+
+ const ProductOverview = () => {
   const { allProducts } = useSelector((state) => state.products);
   const [overviewProduct, setOverviewProduct] = useState([]);
 
@@ -97,3 +98,6 @@ export const ProductOverview = () => {
     </section>
   );
 };
+
+
+export default ProductOverview

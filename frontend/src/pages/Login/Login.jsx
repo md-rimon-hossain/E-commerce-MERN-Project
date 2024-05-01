@@ -4,10 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CheckCircle, Info, X } from "lucide-react";
 
-import PageTitle from "../components/PageTitle";
-import { login } from "../store/authSlice";
-import { apiService } from "../api/apiService";
-import { fetchCartData } from "../store/cartSlice";
+
+import { login } from "../../store/authSlice";
+import { apiService } from "../../api/apiService";
+import { fetchCartData } from "../../store/cartSlice";
+
+import { PageTitle } from "../../components";
 
 const EMAIL_REGEX = /^[a-zA-Z-0-9._-]+@[a-zA-Z0–9.-]+\.[a-zA-Z]{2,4}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;

@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
-import React from "react";
 
 import { useSelector } from "react-redux";
-import userDefaultImage from "../assets/user_default_image.jpg"
+import userDefaultImage from "../../assets/user_default_image.jpg"
 
 function UserProfileBtn({  className = "" }) {
  const {  loginUserData } = useSelector((state) => state.auth);

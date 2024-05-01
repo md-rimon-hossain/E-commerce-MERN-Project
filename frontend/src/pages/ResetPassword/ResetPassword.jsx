@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { CheckCircle, Info, X } from "lucide-react";
 
-import PageTitle from "../components/PageTitle";
-import { apiService } from "../api/apiService";
+
+import { apiService } from "../../api/apiService";
+import { PageTitle } from "../../components";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;
 
@@ -25,7 +26,7 @@ function ResetPassword() {
       navigate("/")
     }
     userPasswordRef.current.focus();
-  }, []);
+  }, [token, navigate]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(password);

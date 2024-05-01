@@ -1,9 +1,26 @@
-import Cart from "./Cart";
-import Error from "./Error";
-import Home from "./Home";
-import Login from "./Login";
-import Register from "./Register";
-import UserProfile from "./UserProfile";
-import ForgetPassword from "./ForgetPassword";
+import Home from "./Home/Home";
+import Cart from "./Cart/Cart";
+import Error from "./Error/Error";
+import Login from "./Login/Login";
+import Register from "./Register/Register";
+import UserProfile from "./UserProfile/UserProfile";
+import ForgetPassword from "./ForgetPassword/ForgetPassword";
+import DashBoard from "./AdminDashBoard/DashBoard";
+import UserActivate from "./UserActivate/UserActivate";
+import ResetPassword from "./ResetPassword/ResetPassword";
 
-export { Home, Register, Login, Cart, Error,UserProfile, ForgetPassword};
+import  ProductOverview  from "./ProductsOverview/ProductsOverview";
+
+export {
+  Home,
+  Register,
+  Login,
+  Cart,
+  Error,
+  UserProfile,
+  ForgetPassword,
+  DashBoard,
+  UserActivate,
+  ResetPassword,
+  ProductOverview,
+};

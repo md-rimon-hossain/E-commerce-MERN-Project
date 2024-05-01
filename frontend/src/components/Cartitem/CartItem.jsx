@@ -9,8 +9,7 @@ import {
 } from "../../store/cartSlice";
 import { Trash } from "lucide-react";
 
-function CartItem({ product, item }) {
-  
+const CartItem = ({ product, item }) => {
   const { cartProducts, loading } = useSelector((state) => state.cart);
   const { loginUserData } = useSelector((state) => state.auth);
   const [localQuantity, setLocalQuantity] = useState(item.quantity);
@@ -30,7 +29,7 @@ function CartItem({ product, item }) {
       dispatch(removeToCartAsync({ userId, productId, quantity }));
     }
   };
-  
+
   const handleDeleteToCart = (cartId, itemId) => {
     dispatch(deleteCartItemAsync({ cartId, itemId }));
   };
@@ -74,7 +73,7 @@ function CartItem({ product, item }) {
                   {/* <span className="text-3xl">৳</span> */}
                   Tk.{product.price} &nbsp;
                 </p>
-                              <p className="text-xs font-medium text-gray-500 line-through">
+                <p className="text-xs font-medium text-gray-500 line-through">
                   {product.originalPrice && `Tk.${product.originalPrice}`}
                 </p>
                 &nbsp;&nbsp;
@@ -126,6 +125,6 @@ function CartItem({ product, item }) {
       </div>
     </div>
   );
-}
+};
 
 export default CartItem;
