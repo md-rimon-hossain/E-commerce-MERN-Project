@@ -5,7 +5,7 @@ const User = require("../models/userModel");
 const { jwtAccessKey } = require("../secret");
 
 
-const isLoggedIn = async (req, res, next) => {
+const isLoggedIn = async (req, _res, next) => {
   try {
     const accessToken = req.cookies.accessToken;
     if (!accessToken) {
@@ -24,7 +24,7 @@ const isLoggedIn = async (req, res, next) => {
     next(error);
   }
 };
-const isLoggedOut = async (req, res, next) => {
+const isLoggedOut = async (req, _res, next) => {
   try {
     const accessToken = req.cookies.accessToken;
     if (accessToken) {
@@ -44,7 +44,7 @@ const isLoggedOut = async (req, res, next) => {
   }
 };
 
-const isAdmin = async (req, res, next) => {
+const isAdmin = async (req, _res, next) => {
   try {
 
     // check is admin have in database

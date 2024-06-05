@@ -5,7 +5,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import AddToCartBtn from '../addToCartBtn/AddToCartBtn';
 
-export function ProductCard({ product }) {
+export default function ProductCard({ product }) {
   const {name, description, image, slug} = product
   
   return (

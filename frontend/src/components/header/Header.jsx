@@ -16,12 +16,12 @@ import { FaXmark } from "react-icons/fa6";
 
 
 import NavLinks from "./NavLinks";
-import Container from "../Container";
+import { Container, LogoutBtn, UserProfileSidebar, UserProfileBtn } from "../index";
 
-import LogoutBtn from "../LogoutBtn"
-import UserProfileBtn from "../UserProfileBtn";
-import { UserProfileSidebar } from "../UserProfileSidebar/UserProfileSidebar";
-import { LogIn } from "lucide-react";
+
+
+
+
 
 const Header = () => {
   const { authStatus, loginUserData } = useSelector((state) => state.auth);
@@ -42,7 +42,7 @@ const Header = () => {
           <div className="bg-inherit ">
             <div className="  flex items-center ">
               <div className="flex-1">
-                <div className="md:hidden text-[#000] block cursor-pointer">
+                <div className="md:hidden pl-3 text-[#000] block cursor-pointer">
                   {showNavbar ? (
                     <FaXmark
                       className="text-2xl text-gray-600"
@@ -101,7 +101,7 @@ const Header = () => {
               </div>
 
               <div className=" px-3">
-                <div className="md:hidden text-gray-600 block">
+                <div className="md:hidden  text-gray-600 block">
                   {showDetails ? (
                     <div className="p-[3px] border  border-gray-500 text-gray-600 rounded-md">
                       <FaXmark

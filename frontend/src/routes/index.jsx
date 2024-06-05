@@ -9,13 +9,14 @@ import {
   Login,
   Register,
   UserProfile,
+  DashBoard,
+  UserActivate,
+  ResetPassword,
+  ProductOverview,
 } from "../pages/index.js";
-import IsAdmin from "../components/IsAdminLayout.jsx";
-import DashBoard from "../pages/DashBoard.jsx";
-import AuthLayout from "../components/AuthLayout.jsx";
-import UserActivate from "../pages/UserActivate.jsx";
-import ResetPassword from "../pages/ResetPassword.jsx";
-import { ProductOverview } from "../pages/ProductsOverview.jsx";
+
+
+import { IsAdmin, AuthLayout } from "../components";
 
 const router = createBrowserRouter([
   {

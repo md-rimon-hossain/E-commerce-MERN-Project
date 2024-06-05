@@ -81,6 +81,12 @@ const cartSlice = createSlice({
     hideCartNotification: (state) => {
       state.showNotification = false;
     },
+    cartEmpty: (state) => {
+      state.cartProducts = null;
+      state.cartItemsCount = 0
+      state.totalPrice = 0
+      state.discountPrice = 0
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -213,6 +219,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, hideCartNotification, removeToCart } =
+export const { addToCart, hideCartNotification, removeToCart,cartEmpty } =
   cartSlice.actions;
 export default cartSlice.reducer;

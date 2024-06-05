@@ -6,8 +6,9 @@ import { LogOut } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { logout } from "../store/authSlice";
-import { apiService } from "../api/apiService";
+import { logout } from "../../store/authSlice";
+import { apiService } from "../../api/apiService";
+import { cartEmpty, fetchCartData } from "../../store/cartSlice";
 
 function LogoutBtn({ className = "" }) {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function LogoutBtn({ className = "" }) {
     try {
       await apiService.post("/api/auth/logout");
       dispatch(logout());
+       dispatch(cartEmpty());
       navigate("/login")
     } catch (error) {
       

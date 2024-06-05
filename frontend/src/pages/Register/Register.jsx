@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { CheckCircle, Info, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import PageTitle from "../components/PageTitle";
-import { apiService } from "../api/apiService";
+import { apiService } from "../../api/apiService";
+import { PageTitle } from "../../components";
 
 // validation regular expression
 const USER_REGEX = /^[A-z][A-z0-9- _.]{4,23}$/;

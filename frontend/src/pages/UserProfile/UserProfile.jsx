@@ -1,5 +1,5 @@
+import { PageTitle } from "../../components";
 
-import PageTitle from "../components/PageTitle";
 
 function UserProfile() {
   return (

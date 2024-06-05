@@ -5,7 +5,7 @@ import { IoIosSend } from "react-icons/io";
 
 // import { appleStorePng, playStorePng, qrCodePng } from "../../index";
 import { Link } from "react-router-dom";
-import Container from "../Container";
+import { Container } from "../";
 const Footer = () => {
   return (
     <>
