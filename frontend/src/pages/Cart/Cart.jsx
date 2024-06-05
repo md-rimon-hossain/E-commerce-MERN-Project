@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { PageTitle, CartItem } from "../../components";
+import { PageTitle, CartItem } from "../../components/index";
 import { assets } from "../../assets";
 
 
