@@ -6,7 +6,7 @@ import UserProfileBtn from "./UserProfileBtn/UserProfileBtn";
 import UserProfileSidebar from "./UserProfileSidebar/UserProfileSidebar";
 import Carousel from "./Carousel/Carousel";
 import AddToCartBtn from "./addToCartBtn/AddToCartBtn";
-import CartItem from "./CartItem/CartItem";
+import CartItem from "./Cartitem/CartItem"
 import CartAddedNotification from "./CartNotification/CartAddedNotification";
 import FilterProducts from "./FiltersProducts/FilterProducts";
 import ProductCard from "./ProductCard/ProductCard";
@@ -23,10 +23,10 @@ export {
   AuthLayout,
   IsAdmin,
   LogoutBtn,
+  CartItem,
   UserProfileBtn,
   UserProfileSidebar,
   AddToCartBtn,
-  CartItem,
   CartAddedNotification,
   FilterProducts,
   ProductCard,

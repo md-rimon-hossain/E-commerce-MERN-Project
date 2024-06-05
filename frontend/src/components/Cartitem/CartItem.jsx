@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,7 +10,7 @@ import {
 } from "../../store/cartSlice";
 import { Trash } from "lucide-react";
 
-const CartItem = ({ product, item }) => {
+export default function CartItem({ product, item }) {
   const { cartProducts, loading } = useSelector((state) => state.cart);
   const { loginUserData } = useSelector((state) => state.auth);
   const [localQuantity, setLocalQuantity] = useState(item.quantity);
@@ -125,6 +126,4 @@ const CartItem = ({ product, item }) => {
       </div>
     </div>
   );
-};
-
-export default CartItem;
+}
