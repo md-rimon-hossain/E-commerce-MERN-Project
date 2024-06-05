@@ -10,7 +10,7 @@ import "./Home.css";
 function Home() {
   const { allProducts, pagination, loading } = useSelector(
     (state) => state.products
-  );
+  )
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -50,11 +50,11 @@ export default function UserProfileSidebar({
               <CircleUser />
               <span className="mx-2 text-sm font-medium">Profile</span>
             </Link>
-            <a href="/login"
+            <Link href="/login"
               onClick={() => setShowUserProfileSidebar(!showUserProfileSidebar)}
             >
               <LogoutBtn />
-            </a>
+            </Link>
           </div>
         </nav>
       </div>
